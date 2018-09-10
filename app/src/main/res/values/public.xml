@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <public id="0x7f030001" name="activity_splash" type="layout" />
+    <public id="0x7f060001" name="btn_login" type="id" />
+    <public id="0x7f060013" name="base_dialog_layout" type="id" />
+    <public id="0x7f060016" name="btn_back" type="id" />
+    <public id="0x7f06003b" name="btn_bind" type="id" />
+    <public id="0x7f060062" name="btn_bind_id" type="id" />
+    <public id="0x7f060077" name="btn_clear" type="id" />
+    <public id="0x7f060003" name="btn_close" type="id" />
+    <public id="0x7f060083" name="btn_code_get" type="id" />
+    <public id="0x7f06008a" name="btn_comfirm_clear" type="id" />
+    <public id="0x7f0600a2" name="btn_confirm" type="id" />
+    <public id="0x7f0600ac" name="btn_login_out" type="id" />
+    <public id="0x7f0600ae" name="btn_member_center" type="id" />
+    <public id="0x7f0600b6" name="btn_next" type="id" />
+    <public id="0x7f060004" name="btn_order_query" type="id" />
+    <public id="0x7f0600cd" name="btn_register" type="id" />
+    <public id="0x7f0600ba" name="btn_register_clear" type="id" />
+    <public id="0x7f0600bb" name="btn_reset" type="id" />
+    <public id="0x7f0600e4" name="btn_retrieve_next" type="id" />
+    <public id="0x7f060101" name="btn_services_center" type="id" />
+    <public id="0x7f060109" name="button1" type="id" />
+    <public id="0x7f060116" name="cb_allow_policy" type="id" />
+    <public id="0x7f06011d" name="et_code" type="id" />
+    <public id="0x7f06011a" name="et_comfirm_psd" type="id" />
+    <public id="0x7f060122" name="et_email" type="id" />
+    <public id="0x7f06012e" name="et_guest_uid" type="id" />
+    <public id="0x7f060120" name="et_psd" type="id" />
+    <public id="0x7f06013d" name="et_retrieve_code" type="id" />
+    <public id="0x7f060136" name="et_user" type="id" />
+    <public id="0x7f060131" name="header_login_input" type="id" />
+    <public id="0x7f060146" name="header_login_trial" type="id" />
+    <public id="0x7f060002" name="iv_logo" type="id" />
+    <public id="0x7f060155" name="iv_user_icon" type="id" />
+    <public id="0x7f060150" name="loading" type="id" />
+    <public id="0x7f060147" name="login" type="id" />
+    <public id="0x7f060158" name="pb_loading" type="id" />
+    <public id="0x7f060157" name="tv_facebook_service" type="id" />
+    <public id="0x7f06014e" name="tv_find_back" type="id" />
+    <public id="0x7f06014d" name="tv_forget_psd" type="id" />
+    <public id="0x7f060152" name="tv_game_name" type="id" />
+    <public id="0x7f06014b" name="tv_login" type="id" />
+    <public id="0x7f06014f" name="tv_login_trial_tips" type="id" />
+    <public id="0x7f06014c" name="tv_private_policy" type="id" />
+    <public id="0x7f06014a" name="tv_register" type="id" />
+    <public id="0x7f060154" name="tv_reply_code" type="id" />
+    <public id="0x7f060148" name="tv_title" type="id" />
+    <public id="0x7f060149" name="tv_try_play" type="id" />
+    <public id="0x7f060153" name="tv_uid" type="id" />
+    <public id="0x7f060156" name="tv_user_id" type="id" />
+    <public id="0x7f060151" name="wv_privacy" type="id" />
+    <public id="0x7f060159" name="tv_pay_role" type="id"/>
+    <public id="0x7f06015b" name="tv_pay_select" type="id"/>
+    <public id="0x7f06015a" name="tv_pay_user" type="id"/>
+    <public id="0x7f06015c" name="recy_pay_list" type="id"/>
+    <public id="0x7f06015e" name="iv_pay_logo" type="id"/>
+    <public id="0x7f060160" name="iv_pay_name" type="id"/>
+	<public id="0x7f060161" name="tv_items_name" type="id"/>
+	<public id="0x7f02002a" name="ic_ai_pay" type="drawable"/>
+	<public id="0x7f02002c" name="ic_weixin_pay" type="drawable"/>
+    <public id="0x7f060005" name="tv_wechat_service" type="id"/>
+    <public id="0x7f060006" name="tv_order_id" type="id"/>
+    <public id="0x7f060007" name="tv_oder_date" type="id"/>
+    <public id="0x7f060008" name="tv_oder_status" type="id"/>
+    <public id="0x7f060009" name="tv_wechat_login" type="id"/>
+    <public id="0x7f06000a" name="tv_qq_login" type="id"/>
+    <public id="0x7f06000b" name="tv_facebook_login" type="id"/>
+    <public id="0x7f06000c" name="lv_order_list" type="id"/>
+    <public id="0x7f06000d" name="tv_no_data" type="id"/>
+    <public id="0x7f06000e" name="moretab_indicator" type="id"/>
+    <public id="0x7f06000f" name="moretab_viewPager" type="id"/>
+    <public id="0x7f060010" name="tv_notice_content" type="id"/>
+    <public id="0x7f060011" name="tv_pay_tips" type="id"/>
+    <public id="0x7f060012" name="btn_last_month" type="id"/>
+    <public id="0x7f060014" name="tv_order_time" type="id"/>
+    <public id="0x7f060015" name="btn_this_month" type="id"/>
+    <public id="0x7f060017" name="btn_exchange_login" type="id"/>
+    <public id="0x7f060018" name="btn_cancle" type="id"/>
+    <public id="0x7f060019" name="btn_confrom" type="id"/>
+    <public id="0x7f06016e" name="btn_update" type="id"/>
+    <public id="0x7f06000b" name="tv_facebook_login" type="id"/>
+    <!-- drawable -->
+    <public id="0x7f02003a" name="fg_logo_portrait" type="drawable"></public>
+    <public id="0x7f020000" name="checkbox_style" type="drawable"></public>
+    <public id="0x7f02001b" name="fg_account" type="drawable"></public>
+    <public id="0x7f02001c" name="fg_bg" type="drawable"></public>
+    <public id="0x7f02001d" name="fg_bg_f" type="drawable"></public>
+    <public id="0x7f02001e" name="fg_bg_full" type="drawable"></public>
+    <public id="0x7f02001f" name="fg_bg_n" type="drawable"></public>
+    <public id="0x7f020020" name="fg_bg_s" type="drawable"></public>
+    <public id="0x7f020021" name="fg_bg_w" type="drawable"></public>
+    <public id="0x7f020022" name="fg_btn_gray" type="drawable"></public>
+    <public id="0x7f020023" name="fg_btn_green" type="drawable"></public>
+    <public id="0x7f020024" name="fg_btn_orange" type="drawable"></public>
+    <public id="0x7f020025" name="fg_checkbox_off" type="drawable"></public>
+    <public id="0x7f020026" name="fg_checkbox_on" type="drawable"></public>
+    <public id="0x7f020027" name="fg_clear_n" type="drawable"></public>
+    <public id="0x7f020028" name="fg_clear_p" type="drawable"></public>
+    <public id="0x7f020029" name="fg_code" type="drawable"></public>
+    <public id="0x7f02002b" name="fg_email" type="drawable"></public>
+    <public id="0x7f02002d" name="fg_forget_btn" type="drawable"></public>
+    <public id="0x7f02002e" name="fg_gamedreamer_icon" type="drawable"></public>
+    <public id="0x7f02002f" name="fg_guest_find_account" type="drawable"></public>
+    <public id="0x7f020030" name="fg_guest_find_uid" type="drawable"></public>
+    <public id="0x7f020031" name="fg_header_back" type="drawable"></public>
+    <public id="0x7f020032" name="fg_header_bg" type="drawable"></public>
+    <public id="0x7f020033" name="fg_header_close" type="drawable"></public>
+    <public id="0x7f020034" name="fg_input" type="drawable"></public>
+    <public id="0x7f020035" name="fg_input_big" type="drawable"></public>
+    <public id="0x7f020036" name="fg_login_type_facebook" type="drawable"></public>
+    <public id="0x7f020037" name="fg_login_type_gamedreamer" type="drawable"></public>
+    <public id="0x7f020038" name="fg_logo" type="drawable"></public>
+    <public id="0x7f020039" name="fg_logo_landscape" type="drawable"></public>
+    <public id="0x7f02003a" name="fg_logo_portrait" type="drawable"></public>
+    <public id="0x7f02003b" name="fg_mem_gift_bg" type="drawable"></public>
+    <public id="0x7f02003c" name="fg_mem_select_option" type="drawable"></public>
+    <public id="0x7f02003d" name="fg_mem_wx_bg" type="drawable"></public>
+    <public id="0x7f02003e" name="fg_member_bind" type="drawable"></public>
+    <public id="0x7f02003f" name="fg_member_icon" type="drawable"></public>
+    <public id="0x7f020040" name="fg_member_loginout" type="drawable"></public>
+    <public id="0x7f020041" name="fg_password" type="drawable"></public>
+    <public id="0x7f020042" name="fg_phone" type="drawable"></public>
+    <public id="0x7f020043" name="fg_sw_icon" type="drawable"></public>
+    <public id="0x7f020044" name="fg_tips_bg" type="drawable"></public>
+    <public id="0x7f020045" name="fg_zc_icon" type="drawable"></public>
+    <public id="0x7f020046" name="google_wallet" type="drawable"></public>
+    <public id="0x7f020047" name="hw_alert" type="drawable"></public>
+    <public id="0x7f020048" name="hw_exchang_login" type="drawable"></public>
+    <public id="0x7f02002a" name="ic_ai_pay" type="drawable"></public>
+    <public id="0x7f020049" name="ic_facebook_login" type="drawable"></public>
+    <public id="0x7f02004b" name="ic_qq_login" type="drawable"></public>
+    <public id="0x7f02004c" name="ic_qq_login_188" type="drawable"></public>
+    <public id="0x7f02004d" name="ic_wechat_login" type="drawable"></public>
+    <public id="0x7f020057" name="selector_clear" type="drawable"></public>
+    
+    <!-- facebook -->
+    <public id="0x7f020087" name="com_facebook_auth_dialog_background" type="drawable"></public>
+    <public id="0x7f020088" name="com_facebook_auth_dialog_cancel_background" type="drawable"></public>
+    <public id="0x7f020089" name="com_facebook_auth_dialog_header_background" type="drawable"></public>
+    <!-- <public id="0x7f02008a" name="com_facebook_button_background" type="drawable"></public> -->
+    <public id="0x7f020056" name="com_facebook_button_background" type="drawable"></public>
+    <public id="0x7f02008b" name="com_facebook_button_icon" type="drawable"></public>
+    <public id="0x7f02008c" name="com_facebook_button_icon_blue" type="drawable"></public>
+    <public id="0x7f02008d" name="com_facebook_button_icon_white" type="drawable"></public>
+    <public id="0x7f02008e" name="com_facebook_button_like_background" type="drawable"></public>
+    <public id="0x7f02008f" name="com_facebook_button_like_icon_selected" type="drawable"></public>
+    <!-- <public id="0x7f020090" name="com_facebook_button_login_background" type="drawable"></public> -->
+    <public id="0x7f02005c" name="com_facebook_button_login_background" type="drawable"></public>
+    <public id="0x7f020091" name="com_facebook_button_login_logo" type="drawable"></public>
+    <public id="0x7f020092" name="com_facebook_button_login_silver_background" type="drawable"></public>
+    <public id="0x7f020093" name="com_facebook_button_send_background" type="drawable"></public>
+    <public id="0x7f020094" name="com_facebook_button_send_icon_blue" type="drawable"></public>
+    <public id="0x7f020095" name="com_facebook_button_send_icon_white" type="drawable"></public>
+    <public id="0x7f020096" name="com_facebook_close" type="drawable"></public>
+    <public id="0x7f020097" name="com_facebook_favicon_blue" type="drawable"></public>
+    <public id="0x7f020098" name="com_facebook_profile_picture_blank_portrait" type="drawable"></public>
+    <public id="0x7f020099" name="com_facebook_profile_picture_blank_square" type="drawable"></public>
+    <public id="0x7f02009a" name="com_facebook_send_button_icon" type="drawable"></public>
+    <public id="0x7f02009b" name="com_facebook_tooltip_black_background" type="drawable"></public>
+    <public id="0x7f02009c" name="com_facebook_tooltip_black_bottomnub" type="drawable"></public>
+    <public id="0x7f02009d" name="com_facebook_tooltip_black_topnub" type="drawable"></public>
+    <public id="0x7f02009e" name="com_facebook_tooltip_black_xout" type="drawable"></public>
+    <public id="0x7f02009f" name="com_facebook_tooltip_blue_background" type="drawable"></public>
+    <public id="0x7f0200a0" name="com_facebook_tooltip_blue_bottomnub" type="drawable"></public>
+    <public id="0x7f0200a1" name="com_facebook_tooltip_blue_topnub" type="drawable"></public>
+    <public id="0x7f0200a2" name="com_facebook_tooltip_blue_xout" type="drawable"></public>
+    
+    
+    
+    <!-- layout -->
+    <public id="0x7f030009" name="dialog_layout_base" type="layout"></public>
+    <public id="0x7f03000d" name="dialog_notice" type="layout"></public>
+    <public id="0x7f03000a" name="dialog_login" type="layout"></public>
+    <public id="0x7f03000b" name="dialog_login_input" type="layout"></public>
+    <public id="0x7f03000c" name="dialog_login_trial" type="layout"></public>
+    <public id="0x7f03000e" name="dialog_order_detail" type="layout"></public>
+    <public id="0x7f03000f" name="dialog_pay" type="layout"></public>
+    <public id="0x7f030010" name="dialog_pay_items" type="layout"></public>
+    <public id="0x7f030011" name="dialog_pay_single" type="layout"></public>
+    <public id="0x7f030012" name="dialog_paycoin_tips" type="layout"></public>
+    <public id="0x7f030013" name="dialog_protocol" type="layout"></public>
+    <public id="0x7f030014" name="dialog_register" type="layout"></public>
+    <public id="0x7f030015" name="dialog_retrieve_guest_account" type="layout"></public>
+    <public id="0x7f030016" name="dialog_save_login_trial" type="layout"></public>
+    <public id="0x7f030017" name="dialog_save_login_trial_02" type="layout"></public>
+    <public id="0x7f030018" name="dialog_third_party_login" type="layout"></public>
+    <public id="0x7f030019" name="dialog_trial_binding_email" type="layout"></public>
+    <public id="0x7f03001a" name="dialog_update" type="layout"></public>
+    <public id="0x7f03001b" name="dialog_user_center" type="layout"></public>
+    <public id="0x7f03001c" name="dialog_wx_pay" type="layout"></public>
+    <public id="0x7f03001d" name="item_history" type="layout"></public>
+    <public id="0x7f03001e" name="layout_loading" type="layout"></public>
+    <public id="0x7f030025" name="pager_order" type="layout"></public>
+    <public id="0x7f030026" name="pay_item" type="layout"></public>
+    <public id="0x7f030027" name="pay_result" type="layout"></public>
+    <public id="0x7f030028" name="tab_top" type="layout"></public>
+    <public id="0x7f030007" name="dialog_forget_password" type="layout"></public>
+    <public id="0x7f030006" name="dialog_change_password" type="layout"></public>
+    <public id="0x7f030008" name="dialog_header" type="layout"/>
+    
+    <!-- style -->
+    <public id="0x7f070018" name="CustDialog" type="style"/>
+    <public id="0x7f07001a" name="CustomCheckboxTheme" type="style"/>
+    <public id="0x7f070019" name="dialog" type="style"/>
+    <public id="0x7f070166" name="com_facebook_activity_theme" type="style"/>
+    <public id="0x7f070167" name="com_facebook_auth_dialog" type="style"/>
+    <public id="0x7f070168" name="com_facebook_auth_dialog_instructions_textview" type="style"/>
+    <public id="0x7f070169" name="com_facebook_button" type="style"/>
+    <public id="0x7f07016a" name="com_facebook_button_like" type="style"/>
+    <public id="0x7f07016d" name="com_facebook_loginview_default_style" type="style"/>
+    <public id="0x7f07016e" name="com_facebook_loginview_silver_style" type="style"/>
+    
+    <!-- string -->
+    <public id="0x7f050031" name="generic_server_down" type="string"></public>
+    <!--  试玩登录  -->
+    <public id="0x7f050034" name="hw_login_tour_dialog_title" type="string"></public>
+    <public id="0x7f050096" name="is_timeline" type="string"></public>
+    <public id="0x7f05008a" name="launch_wx" type="string"></public>
+    <public id="0x7f050030" name="no_internet" type="string"></public>
+    <!--  公告中心   -->
+    <public id="0x7f0500c8" name="notice_title" type="string"></public>
+    <public id="0x7f0500c2" name="order_all" type="string"></public>
+    <public id="0x7f0500c4" name="order_fail" type="string"></public>
+    <public id="0x7f0500c5" name="order_last_month" type="string"></public>
+    <public id="0x7f0500c7" name="order_no_data" type="string"></public>
+    <!--  订单查询   -->
+    <public id="0x7f050066" name="order_sreach_titile" type="string"></public>
+    <public id="0x7f0500c3" name="order_success" type="string"></public>
+    <public id="0x7f0500c6" name="order_this_month" type="string"></public>
+    <public id="0x7f0500c0" name="pay_cancel" type="string"></public>
+    <public id="0x7f0500c1" name="pay_fail" type="string"></public>
+    <public id="0x7f0500be" name="pay_result_callback_msg" type="string"></public>
+     <!--  绑定邮箱   -->
+    <public id="0x7f050053" name="string_bind_email_title" type="string"></public>
+    <public id="0x7f050028" name="string_bind_id" type="string"></public>
+    <public id="0x7f050023" name="string_btn_login" type="string"></public>
+    <public id="0x7f05001c" name="string_bussiness" type="string"></public>
+    <public id="0x7f050026" name="string_comfirm_psd" type="string"></public>
+    <public id="0x7f050033" name="string_exchange_login" type="string"></public>
+    <public id="0x7f050029" name="string_exit" type="string"></public>
+    <public id="0x7f05002c" name="string_facebook" type="string"></public>
+    <public id="0x7f05001b" name="string_facebook_login" type="string"></public>
+     <!--  忘记密码    -->
+    <public id="0x7f050044" name="string_forget" type="string"></public>
+    <public id="0x7f050049" name="string_forget_btn_next" type="string"></public>
+    <public id="0x7f05004e" name="string_forget_btn_reset" type="string"></public>
+    <public id="0x7f050048" name="string_forget_btn_text" type="string"></public>
+    <public id="0x7f05004d" name="string_forget_change_password" type="string"></public>
+    <public id="0x7f05004b" name="string_forget_email_code_allnull" type="string"></public>
+    <public id="0x7f05004a" name="string_forget_email_isnull" type="string"></public>
+    <public id="0x7f050047" name="string_forget_hint_code" type="string"></public>
+    <public id="0x7f050046" name="string_forget_hint_email" type="string"></public>
+    <public id="0x7f050024" name="string_forget_psd" type="string"></public>
+    <public id="0x7f05004c" name="string_forget_pwd_null" type="string"></public>
+    <public id="0x7f050045" name="string_forget_title" type="string"></public>
+    <public id="0x7f050037" name="string_guest_find_game_name" type="string"></public>
+    <public id="0x7f05003b" name="string_guest_game_title" type="string"></public>
+    <public id="0x7f05003c" name="string_guest_id_title" type="string"></public>
+    <public id="0x7f050039" name="string_guest_reply_code" type="string"></public>
+    <public id="0x7f05003d" name="string_guest_reply_title" type="string"></public>
+    <public id="0x7f05003e" name="string_guest_test_tips" type="string"></public>
+    <public id="0x7f05003a" name="string_guest_tips" type="string"></public>
+    <public id="0x7f050038" name="string_guest_uid_test" type="string"></public>
+     <!--   登入详情页   -->
+    <public id="0x7f050020" name="string_id" type="string"></public>
+    <public id="0x7f05001a" name="string_login" type="string"></public>
+    <public id="0x7f050043" name="string_login_allow" type="string"></public>
+    <public id="0x7f050042" name="string_login_empty" type="string"></public>
+    <!--   状态返回    -->
+    <public id="0x7f05003f" name="string_logintrial_fail" type="string"></public>
+    <!--   会员中心     -->
+    <public id="0x7f050027" name="string_member_center" type="string"></public>
+    <public id="0x7f05002f" name="string_order_query" type="string"></public>
+    <public id="0x7f05002d" name="string_other_function" type="string"></public>
+    <public id="0x7f050059" name="string_pay_aipay" type="string"></public>
+    <public id="0x7f05005c" name="string_pay_cancle" type="string"></public>
+    <public id="0x7f05005e" name="string_pay_coin_coin" type="string"></public>
+    <public id="0x7f05005d" name="string_pay_confrom" type="string"></public>
+    <public id="0x7f05005b" name="string_pay_error" type="string"></public>
+    <public id="0x7f05005f" name="string_pay_google" type="string"></public>
+    <public id="0x7f050062" name="string_pay_google_consume_error" type="string"></public>
+    <public id="0x7f050061" name="string_pay_google_getorder_error" type="string"></public>
+    <public id="0x7f050060" name="string_pay_google_initerror" type="string"></public>
+    <public id="0x7f050063" name="string_pay_google_pay_error" type="string"></public>
+    <public id="0x7f050056" name="string_pay_role_name" type="string"></public>
+    <public id="0x7f050058" name="string_pay_select_channel" type="string"></public>
+    <!--  充值中心      -->
+    <public id="0x7f050055" name="string_pay_title" type="string"></public>
+    <public id="0x7f050057" name="string_pay_user" type="string"></public>
+    <public id="0x7f05005a" name="string_pay_weixin_pay" type="string"></public>
+    <public id="0x7f05001d" name="string_privacy_policy" type="string"></public>
+    <public id="0x7f05001e" name="string_privacy_rules" type="string"></public>
+    <public id="0x7f050021" name="string_psd" type="string"></public>
+    <public id="0x7f050019" name="string_qq_login" type="string"></public>
+    <public id="0x7f050018" name="string_register" type="string"></public>
+    <public id="0x7f050040" name="string_register_empty" type="string"></public>
+    <public id="0x7f050041" name="string_register_no_same" type="string"></public>
+    <public id="0x7f05002e" name="string_service_center" type="string"></public>
+    <public id="0x7f05001f" name="string_third_login" type="string"></public>
+    <public id="0x7f05002a" name="string_tips" type="string"></public>
+    <public id="0x7f050051" name="string_trial_etHint_code" type="string"></public>
+    <public id="0x7f050050" name="string_trial_etHint_uid" type="string"></public>
+    <!--  试玩账号找回       -->
+    <public id="0x7f05004f" name="string_trial_find_title" type="string"></public>
+    <public id="0x7f050052" name="string_trial_uidOrcode_null" type="string"></public>
+    <public id="0x7f050025" name="string_try_id" type="string"></public>
+    <public id="0x7f050016" name="string_try_play" type="string"></public>
+    <!--  登陆对话框的字体       -->
+    <public id="0x7f050015" name="string_type_login" type="string"></public>
+    <public id="0x7f050017" name="string_wechat_login" type="string"></public>
+    <public id="0x7f05002b" name="string_weixin" type="string"></public>
+    <public id="0x7f0500b9" name="target_scene" type="string"></public>
+    <public id="0x7f0500bc" name="target_scene_favorite" type="string"></public>
+    <public id="0x7f0500ba" name="target_scene_session" type="string"></public>
+    <public id="0x7f0500bb" name="target_scene_timeline" type="string"></public>
+    <public id="0x7f0500ac" name="unregister_from_weixin" type="string"></public>
+    <public id="0x7f0500ca" name="update_btn" type="string"></public>
+    
+    <!-- color -->
+     <public id="0x7f0a007d" name="abc_background_cache_hint_selector_material_dark" type="color"></public>
+     <public id="0x7f0a007e" name="abc_background_cache_hint_selector_material_light" type="color"></public>
+     <public id="0x7f0a0081" name="abc_color_highlight_material" type="color"></public>
+     <public id="0x7f0a0000" name="abc_input_method_navigation_guard" type="color"></public>
+     <public id="0x7f0a0084" name="abc_primary_text_disable_only_material_dark" type="color"></public>
+     <public id="0x7f0a0085" name="abc_primary_text_disable_only_material_light" type="color"></public>
+     <public id="0x7f0a0086" name="abc_primary_text_material_dark" type="color"></public>
+     <public id="0x7f0a0087" name="abc_primary_text_material_light" type="color"></public>
+     <public id="0x7f0a0088" name="abc_search_url_text" type="color"></public>
+     <public id="0x7f0a0001" name="abc_search_url_text_normal" type="color"></public>
+     <public id="0x7f0a0002" name="abc_search_url_text_pressed" type="color"></public>
+     <public id="0x7f0a0003" name="abc_search_url_text_selected" type="color"></public>
+     <public id="0x7f0a0089" name="abc_secondary_text_material_dark" type="color"></public>
+     <public id="0x7f0a008a" name="abc_secondary_text_material_light" type="color"></public>
+     <!-- <public id="0x7f0a008b" name="abc_tint_btn_checkable" type="color"></public>
+     <public id="0x7f0a008c" name="abc_tint_default" type="color"></public> -->
+     <public id="0x7f0a0019" name="com_facebook_blue" type="color"></public>
+     <public id="0x7f0a001a" name="com_facebook_button_background_color" type="color"></public>
+     <public id="0x7f0a001b" name="com_facebook_button_background_color_disabled" type="color"></public>
+     <public id="0x7f0a001c" name="com_facebook_button_background_color_focused" type="color"></public>
+     <public id="0x7f0a001d" name="com_facebook_button_background_color_focused_disabled" type="color"></public>
+     <public id="0x7f0a001e" name="com_facebook_button_background_color_pressed" type="color"></public>
+     <public id="0x7f0a001f" name="com_facebook_button_background_color_selected" type="color"></public>
+     <public id="0x7f0a0020" name="com_facebook_button_border_color_focused" type="color"></public>
+     <public id="0x7f0a0021" name="com_facebook_button_login_background_color" type="color"></public>
+     <public id="0x7f0a0022" name="com_facebook_button_login_silver_background_color" type="color"></public>
+     <public id="0x7f0a0023" name="com_facebook_button_login_silver_background_color_pressed" type="color"></public>
+     <public id="0x7f0a0024" name="com_facebook_button_send_background_color" type="color"></public>
+     <public id="0x7f0a0025" name="com_facebook_button_send_background_color_pressed" type="color"></public>
+     <public id="0x7f0a0091" name="com_facebook_button_text_color" type="color"></public>
+     <!-- <public id="0x7f07006c" name="com_facebook_button_text_color" type="color"></public> -->
+     <public id="0x7f0a0026" name="com_facebook_device_auth_text" type="color"></public>
+     <public id="0x7f0a0027" name="com_facebook_likeboxcountview_border_color" type="color"></public>
+     <public id="0x7f0a0028" name="com_facebook_likeboxcountview_text_color" type="color"></public>
+     <public id="0x7f0a0029" name="com_facebook_likeview_text_color" type="color"></public>
+     <public id="0x7f0a002a" name="com_facebook_messenger_blue" type="color"></public>
+     <public id="0x7f0a0092" name="com_facebook_send_button_text_color" type="color"></public>
+     <!-- dimen -->
+     <public id="0x7f0b004f" name="com_facebook_auth_dialog_corner_radius" type="dimen"></public>
+     <public id="0x7f0b0050" name="com_facebook_auth_dialog_corner_radius_oversized" type="dimen"></public>
+     <public id="0x7f0b0051" name="com_facebook_button_corner_radius" type="dimen"></public>
+     <public id="0x7f0b0052" name="com_facebook_button_login_corner_radius" type="dimen"></public>
+     <public id="0x7f0b0053" name="com_facebook_likeboxcountview_border_radius" type="dimen"></public>
+     <public id="0x7f0b0054" name="com_facebook_likeboxcountview_border_width" type="dimen"></public>
+     <public id="0x7f0b0055" name="com_facebook_likeboxcountview_caret_height" type="dimen"></public>
+     <public id="0x7f0b0056" name="com_facebook_likeboxcountview_caret_width" type="dimen"></public>
+     <public id="0x7f0b0057" name="com_facebook_likeboxcountview_text_padding" type="dimen"></public>
+     <public id="0x7f0b0058" name="com_facebook_likeboxcountview_text_size" type="dimen"></public>
+     <public id="0x7f0b0059" name="com_facebook_likeview_edge_padding" type="dimen"></public>
+     <public id="0x7f0b005a" name="com_facebook_likeview_internal_padding" type="dimen"></public>
+     <public id="0x7f0b005b" name="com_facebook_likeview_text_size" type="dimen"></public>
+     <public id="0x7f0b005c" name="com_facebook_profilepictureview_preset_size_large" type="dimen"></public>
+     <public id="0x7f0b005e" name="com_facebook_profilepictureview_preset_size_small" type="dimen"></public>
+     <public id="0x7f0b005d" name="com_facebook_profilepictureview_preset_size_normal" type="dimen"></public>
+     
+    <!--  更新提示体       -->
+    <public id="0x7f0500c9" name="update_title" type="string"></public>
+    <!-- 未知错误提示 -->
+    <public id="0x7f0500cc" name="json_encode_error" type="string"></public>
+    <!-- 平台配置 -->
+    <public id="0x7f0500cd" name="platform" type="string"></public>
+    <public id="0x7f0500ce" name="channel" type="string"></public>
+</resources>

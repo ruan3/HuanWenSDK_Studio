@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical" >
+
+    <TextView 
+        android:id="@id/tv_order_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="单号："
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sdk_main_text_size"
+        />
+
+    <TextView 
+        android:id="@id/tv_oder_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="日期："
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/sdk_main_text_size"
+        />
+    
+    <TextView 
+        android:id="@id/tv_oder_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="状态："
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/sdk_main_text_size"
+        />
+    
+</LinearLayout>

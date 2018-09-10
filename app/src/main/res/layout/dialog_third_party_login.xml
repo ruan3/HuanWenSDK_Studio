@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fg_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sdk_logo_margin"
+        android:src="@drawable/fg_logo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/sdk_login_type_login_margin"
+        android:text="@string/string_third_login"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sdk_main_text_size" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal" >
+
+        <TextView
+            android:id="@id/tv_wechat_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/sdk_drawable_padding"
+            android:drawableTop="@drawable/ic_wechat_login"
+            android:gravity="center"
+            android:text="@string/string_wechat_login"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sdk_main_text_size" />
+
+        <TextView
+            android:id="@id/tv_qq_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/sdk_drawable_padding"
+            android:drawableTop="@drawable/ic_qq_login_188"
+            android:gravity="center"
+            android:text="@string/string_qq_login"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sdk_main_text_size"
+            android:visibility="gone" />
+
+        <!--
+             <TextView
+            android:id="@+id/tv_facebook_login"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/string_facebook_login"
+            android:textSize="@dimen/sdk_main_text_size"
+            android:drawableTop="@drawable/ic_facebook_login"
+            android:gravity="center"
+            android:drawablePadding="@dimen/sdk_drawable_padding"
+              android:textColor="@color/black"
+            />
+        -->
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@id/tv_facebook_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/sdk_login_margin_right"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="13dp"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="@string/string_bussiness"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sdk_main_text_size" />
+
+        <TextView
+            android:id="@id/tv_private_policy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_privacy_policy"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sdk_main_text_size" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fg_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+    
+    <ImageView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/fg_logo"
+        android:layout_marginTop="@dimen/sdk_logo_margin"
+        />
+    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/string_type_login"
+        android:textSize="@dimen/sdk_main_text_size"
+        android:layout_margin="@dimen/sdk_login_type_login_margin"
+          android:textColor="@color/black"
+        />
+    
+    <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+		android:gravity="center_horizontal"
+        >
+        
+        <TextView 
+            android:id="@id/tv_try_play"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/string_try_play"
+            android:layout_marginRight="15dp"
+            android:textSize="@dimen/sdk_main_text_size"
+            android:drawableTop="@drawable/fg_sw_icon"
+            android:gravity="center"
+            android:drawablePadding="@dimen/sdk_drawable_padding"
+              android:textColor="@color/black"
+            />
+        
+        <TextView 
+            android:id="@id/tv_register"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/string_register"
+            android:layout_marginRight="15dp"
+            android:textSize="@dimen/sdk_main_text_size"
+            android:drawableTop="@drawable/fg_zc_icon"
+            android:gravity="center"
+            android:drawablePadding="@dimen/sdk_drawable_padding"
+              android:textColor="@color/black"
+            />
+        
+        <TextView 
+            android:id="@id/tv_login"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/string_login"
+            android:textSize="@dimen/sdk_main_text_size"
+            android:drawableTop="@drawable/fg_gamedreamer_icon"
+            android:gravity="center"
+            android:drawablePadding="@dimen/sdk_drawable_padding"
+              android:textColor="@color/black"
+            />
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="@dimen/sdk_login_margin_right"
+        >
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/string_bussiness"
+          android:textColor="@color/black"
+          android:visibility="gone"
+        android:textSize="@dimen/sdk_main_text_size"
+        android:layout_gravity="left"
+        />
+    
+    <TextView 
+        android:id="@id/tv_private_policy"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:text="@string/string_third_login"
+        android:textSize="@dimen/sdk_main_text_size"
+        />
+    </LinearLayout>
+
+</LinearLayout>

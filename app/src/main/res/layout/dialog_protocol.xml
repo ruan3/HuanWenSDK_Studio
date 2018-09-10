@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fg_header_bg" >
+
+        <Button
+            android:id="@id/btn_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/fg_header_close" />
+
+        <TextView
+            android:id="@id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/btn_back"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/string_privacy_rules"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sdk_title_text_size" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/fg_bg_full" >
+        
+        <FrameLayout 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            
+             <WebView
+            android:id="@id/wv_privacy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+             
+             <include 
+                 layout="@layout/layout_loading"
+                 android:id="@+id/loading"
+                 />
+            
+        </FrameLayout>
+
+       
+    </LinearLayout>
+
+</LinearLayout>

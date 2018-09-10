@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fg_bg_f"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/string_guest_tips"
+        android:textSize="@dimen/sdk_title_text_size"
+        android:drawableLeft="@drawable/hw_alert"
+        android:textColor="@color/red"
+        android:layout_marginTop="10dp"
+        />
+    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/string_guest_find_game_name"
+        android:textSize="@dimen/sdk_title_text_size"
+        android:textColor="@color/gray"
+        android:layout_marginTop="15dp"
+        />
+    
+    
+    <TextView 
+        android:id="@+id/tv_game_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fg_input"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+         android:gravity="center"
+        android:layout_marginRight="10dp"
+        android:textSize="@dimen/sdk_title_text_size"
+        />
+
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/string_guest_id_title"
+        android:textSize="@dimen/sdk_title_text_size"
+        android:textColor="@color/gray"
+       
+        android:layout_marginTop="15dp"
+        />
+    
+    
+    <TextView 
+        android:id="@+id/tv_uid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fg_input"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+         android:gravity="center"
+        android:layout_marginRight="10dp"
+        android:textSize="@dimen/sdk_title_text_size"
+        />
+    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/string_guest_reply_title"
+        android:textSize="@dimen/sdk_title_text_size"
+        android:textColor="@color/gray"
+        android:layout_marginTop="15dp"
+        />
+    
+    
+    <TextView 
+        android:id="@+id/tv_reply_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fg_input"
+        android:layout_marginTop="5dp"
+         android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="@dimen/sdk_title_text_size"
+        />
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+        
+        <View 
+            android:layout_height="1px"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@color/black"
+            />
+        
+        <ImageView 
+           	android:layout_width="wrap_content"
+           	android:layout_height="wrap_content"
+           	android:background="@drawable/fg_logo"
+           	android:layout_marginLeft="10dp"
+           	android:layout_marginRight="10dp"
+            />
+        
+        <View 
+            android:layout_height="1px"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@color/black"
+            />
+        
+    </LinearLayout>
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="10dp"
+        android:layout_marginTop="3dp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sdk_main_text_size"
+        android:text="@string/string_guest_test_tips"
+        android:background="@color/sdk_color_guest_tips"
+        android:layout_marginBottom="3dp"
+        />
+    
+</LinearLayout>

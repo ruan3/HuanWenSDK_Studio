@@ -1,0 +1,12 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="sdk_logo_margin">15dp</dimen>
+   	<dimen name="sdk_main_text_size">12sp</dimen>
+   	<dimen name="sdk_title_text_size">18sp</dimen>
+   	<dimen name="sdk_login_type_login_margin">50dp</dimen>
+   	<dimen name="sdk_drawable_padding">10dp</dimen>
+   	<dimen name="sdk_login_margin_right">15dp</dimen>
+   	
+   	<dimen name="sdk_login_margin_top">10dp</dimen>
+</resources>

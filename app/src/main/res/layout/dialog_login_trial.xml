@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fg_bg_s"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@id/header_login_trial"
+        layout="@layout/dialog_header" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <TextView
+            android:id="@id/tv_login_trial_tips"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/sdk_login_margin_top"
+            android:gravity="center"
+            android:text="测试测试"
+            android:textColor="@color/blacks"
+            android:textSize="@dimen/sdk_main_text_size" />
+
+        <include
+            android:id="@id/loading"
+            layout="@layout/layout_loading"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <Button
+        android:id="@id/btn_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/fg_btn_green"
+        android:text="@string/string_btn_login"
+        android:textColor="@color/white" />
+
+</LinearLayout>

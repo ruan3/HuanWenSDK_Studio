@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fg_bg_s"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fg_bg_s"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="@dimen/sdk_login_margin_top" >
+
+            <Button
+                android:id="@id/btn_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/fg_header_close" />
+
+            <TextView
+                android:id="@id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/btn_back"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/string_pay_title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sdk_title_text_size" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@id/tv_pay_role"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/string_pay_role_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sdk_main_text_size" />
+
+        <TextView
+            android:id="@id/tv_pay_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/string_pay_user"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sdk_main_text_size" />
+
+        <TextView
+            android:id="@id/tv_pay_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:text="@string/string_pay_select_channel"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/sdk_main_text_size" />
+        
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:orientation="horizontal"
+            >
+            
+            <TextView 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_weight="1.2"
+            android:layout_height="130dp" >
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@id/recy_pay_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="10dp"
+                    android:padding="10dp" />
+
+            <TextView
+                android:id="@id/tv_pay_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/string_pay_error"
+                android:textSize="@dimen/sdk_title_text_size"
+                android:visibility="gone" />
+        </FrameLayout>
+        
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            />
+        </LinearLayout>
+    </LinearLayout>
+
+    <include
+        android:id="@id/loading"
+        layout="@layout/layout_loading"
+        android:visibility="gone" />
+
+</FrameLayout>

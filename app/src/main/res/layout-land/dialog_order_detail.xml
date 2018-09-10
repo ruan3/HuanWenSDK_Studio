@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fg_bg_s"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="@dimen/sdk_login_margin_top" >
+
+        <Button
+            android:id="@id/btn_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/fg_header_back" />
+
+        <TextView
+            android:id="@id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/btn_back"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/order_sreach_titile"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sdk_title_text_size" />
+    </RelativeLayout>
+
+    <com.shizhefei.view.indicator.ScrollIndicatorView
+        android:id="@id/moretab_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@id/moretab_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+         />
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_margin="5dp"
+        android:background="@color/gray"
+        />
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp"
+        >
+        
+        <Button 
+            android:id="@id/btn_last_month"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/order_last_month"
+            android:background="@drawable/google_wallet"
+            android:textColor="@color/order_btn_color"
+            />
+        
+        <TextView 
+            android:id="@id/tv_order_time"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="2018/04"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sdk_main_text_size"
+            />
+        
+        <Button 
+            android:id="@id/btn_this_month"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/order_this_month"
+            android:background="@drawable/google_wallet"
+            android:textColor="@color/order_btn_color"
+            />
+        
+    </LinearLayout>
+    
+</LinearLayout>

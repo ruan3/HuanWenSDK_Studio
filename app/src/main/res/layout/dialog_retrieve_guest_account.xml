@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fg_bg_s"
+        android:orientation="vertical" >
+
+        <include
+            android:id="@id/header_login_input"
+            layout="@layout/dialog_header" />
+
+        <EditText
+            android:id="@id/et_guest_uid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/sdk_login_margin_right"
+            android:background="@drawable/fg_input_big"
+            android:drawableLeft="@drawable/fg_account"
+            android:drawablePadding="@dimen/sdk_drawable_padding"
+            android:hint="@string/string_trial_etHint_uid"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+        </EditText>
+
+        <EditText
+            android:id="@id/et_retrieve_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/sdk_login_margin_right"
+            android:background="@drawable/fg_input_big"
+            android:drawableLeft="@drawable/fg_password"
+            android:drawablePadding="@dimen/sdk_drawable_padding"
+            android:hint="@string/string_trial_etHint_code"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+        </EditText>
+
+        <Button
+            android:id="@id/btn_retrieve_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/sdk_login_margin_top"
+            android:background="@drawable/fg_btn_green"
+            android:text="@string/string_forget_btn_next"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <include
+        android:id="@id/loading"
+        layout="@layout/layout_loading"
+        android:visibility="gone" />
+
+</FrameLayout>

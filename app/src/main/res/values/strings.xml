@@ -1,0 +1,283 @@
+<resources>
+
+    <string name="app_name">YinHeXinSdk</string>
+    <!-- 登陆对话框的字体 -->
+    <string name="string_type_login">选择登入方式</string>
+    <string name="string_try_play">试玩游戏</string>
+    <string name="string_wechat_login">微信登录</string>
+    <string name="string_register">注册账号</string>
+    <string name="string_qq_login">qq登录</string>
+    <string name="string_login">账号登入</string>
+    <string name="string_facebook_login">fookback登录</string>
+    <string name="string_bussiness">商业协定：</string>
+    <string name="string_privacy_policy">隐私政策</string>
+    <string name="string_privacy_rules">隐私条例</string>
+    <string name="string_third_login">第三方登录</string>
+
+    <!-- 登入详情页 -->
+    <string name="string_id">账号（邮箱）</string>
+    <string name="string_psd">密码</string>
+    <string name="string_allow_policy">同意会员服务条款</string>
+    <string name="string_btn_login">登入</string>
+    <string name="string_forget_psd">忘记密码？</string>
+    <string name="string_try_id">试玩账号找回</string>
+    <string name="string_comfirm_psd">请再次输入密码</string>
+
+    <!-- 会员中心 -->
+    <string name="string_member_center">会员中心</string>
+    <string name="string_bind_id">绑定账号</string>
+    <string name="string_exit">退出</string>
+    <string name="string_tips">游戏礼包/游戏资讯/在线客服</string>
+    <string name="string_weixin">微信公众号</string>
+    <string name="string_facebook">FACEBOOK粉丝团</string>
+    <string name="string_other_function">其他功能</string>
+    <string name="string_service_center">客服中心</string>
+    <string name="string_order_query">订单查询</string>
+    <string name="no_internet">无网络连接~！</string>
+    <string name="generic_server_down">连接服务器失败~！</string>
+    <string name="generic_error">网络异常,请稍后再试~！</string>
+    <string name="string_exchange_login">切换账号</string>
+    <string name="string_service_tips">已复制微信公众号，请到微信里粘贴并添加公众号，获取最新资讯礼包以及客服信息</string>
+
+    <!-- 试玩登录 -->
+    <string name="hw_login_tour_dialog_title">将以试玩账号进入游戏</string>
+    <string name="hw_confirm">确定</string>
+    <string name="hw_login_tour_dialog_message">为了账号安全，建议尽快在游戏内绑定正式账号，同时我们会将试玩账号资料以照片方式保存到你的相冊,方便找回账号</string>
+    <string name="string_guest_find_game_name">游戏</string>
+    <string name="string_guest_uid_test">uid测试</string>
+    <string name="string_guest_reply_code">恢复码</string>
+    <string name="string_guest_tips">此图用于试玩角色找回，请妥善保存</string>
+    <string name="string_guest_game_title">银河星账号</string>
+    <string name="string_guest_id_title">试玩账号UID</string>
+    <string name="string_guest_reply_title">恢复码</string>
+    <string name="string_guest_test_tips">此图为你的银河星试玩账号资料，请妥善保存，为了你的账号安全。请尽快绑定为正式账号</string>
+
+    <!-- 状态返回 -->
+    <string name="string_logintrial_fail">游客登录失败</string>
+    <string name="string_register_empty">请输入账号，密码或确认密码</string>
+    <string name="string_register_no_same">两次密码不相同</string>
+    <string name="string_login_empty">请输入账号或密码</string>
+    <string name="string_login_allow">请勾选同意服务条例</string>
+
+    <!-- 忘记密码 -->
+    <string name="string_forget">忘记密码</string>
+    <string name="string_forget_title">电子信箱</string>
+    <string name="string_forget_hint_email">请输入绑定的邮箱</string>
+    <string name="string_forget_hint_code">请输入验证码</string>
+    <string name="string_forget_btn_text">获取验证码</string>
+    <string name="string_forget_btn_next">下一步</string>
+    <string name="string_forget_email_isnull">请输入邮箱</string>
+    <string name="string_forget_email_code_allnull">请输入邮箱或验证码</string>
+    <string name="string_forget_pwd_null">请输入密码或确认密码</string>
+    <string name="string_forget_change_password">重置密码</string>
+    <string name="string_forget_btn_reset">重置</string>
+
+    <!-- 试玩账号找回 -->
+    <string name="string_trial_find_title">试玩账号找回</string>
+    <string name="string_trial_etHint_uid">试玩账号UID</string>
+    <string name="string_trial_etHint_code">恢复码</string>
+    <string name="string_trial_uidOrcode_null">请输入uid和恢复码</string>
+
+    <!-- 绑定邮箱 -->
+    <string name="string_bind_email_title">绑定邮箱</string>
+    <string name="string_bind_email_btn">绑定</string>
+
+    <!-- 充值中心 -->
+    <string name="string_pay_title">充值中心</string>
+    <string name="string_pay_role_name">充值角色：</string>
+    <string name="string_pay_user">充值账号：</string>
+    <string name="string_pay_select_channel">选择充值方式</string>
+    <string name="string_pay_aipay">支付宝</string>
+    <string name="string_pay_weixin_pay">微信支付</string>
+    <string name="string_pay_error">获取支付列表失败，点击重试</string>
+    <string name="string_pay_cancle">取消</string>
+    <string name="string_pay_confrom">确定</string>
+    <string name="string_pay_coin_coin">支付提示</string>
+    <string name="string_pay_google">谷歌支付</string>
+    <string name="string_pay_google_initerror">谷歌支付初始化失败</string>
+    <string name="string_pay_google_getorder_error">获取谷歌支付订单出错</string>
+    <string name="string_pay_google_consume_error">消费商品失败</string>
+    <string name="string_pay_google_pay_error">谷歌支付失败</string>
+    <string name="string_pay_google_init_error">谷歌初始化失败了</string>
+
+    <!-- 微信的字段 -->
+    <string name="app_back">返回</string>
+    <string name="app_ok">确定</string>
+    <string name="app_cancel">取消</string>
+    <string name="app_continue">继续</string>
+    <string name="app_tip">提示</string>
+    <string name="app_send">发送</string>
+    <string name="app_set">设置</string>
+    <string name="app_save">保存</string>
+    <string name="app_delete">删除</string>
+    <string name="app_nextstep">下一步</string>
+    <string name="app_prevstep">上一步</string>
+    <string name="app_finish">完成</string>
+    <string name="app_find">查找</string>
+    <string name="app_edit">编辑</string>
+
+    <!-- applet -->
+    <string name="applet_secimg_title">填写验证码</string>
+    <string name="applet_secimg_change">换一张图片</string>
+    <string name="applet_seccode_tip">验证码不能为空</string>
+    <string name="applet_seccode_fail_tip">验证码错误，请重新输入</string>
+
+    <!-- verify -->
+    <string name="verify_password_null_tip">密码不能为空，请输入密码</string>
+
+    <!-- format -->
+    <string name="fmt_date">M月d日</string>
+    <string name="fmt_longdate">yyyy年M月d日</string>
+    <string name="fmt_datetime" formatted="false">M月d日 %skk:mm</string>
+    <string name="fmt_patime">kk:mm</string>
+    <string name="fmt_longtime" formatted="false">yyyy年M月d日 %skk:mm</string>
+    <string name="fmt_in60min" formatted="false">%d分钟前</string>
+    <string name="fmt_justnow">1分钟内</string>
+    <string name="fmt_dawn">凌晨</string>
+    <string name="fmt_morning">早上</string>
+    <string name="fmt_noon">中午</string>
+    <string name="fmt_afternoon">下午</string>
+    <string name="fmt_evening">晚上</string>
+    <string name="fmt_pre_yesterday">昨天</string>
+    <string name="fmt_iap_err" formatted="false">网络连接不可用，请稍候重试</string>
+    <string name="hello">Hello World, SDKSampleActivity!</string>
+    <string name="app_share">分享</string>
+    <string name="enter">这是SDK_Sample的入口界面</string>
+    <string name="reg">将该app注册到微信</string>
+    <string name="goto_send">跳转到发消息界面</string>
+    <string name="launch_wx">启动微信</string>
+    <string name="check_timeline_supported">检查是否支持发送到朋友圈</string>
+    <string name="send_to_wx_title">发送到微信</string>
+    <string name="get_from_wx_title">从微信接收</string>
+    <string name="show_from_wx_title">显示微信请求的消息</string>
+    <string name="errcode_success">发送成功</string>
+    <string name="errcode_cancel">发送取消</string>
+    <string name="errcode_deny">发送被拒绝</string>
+    <string name="errcode_unsupported">不支持错误</string>
+    <string name="errcode_unknown">发送返回</string>
+
+    <!-- WXMediaMessage -->
+    <string name="send">发送到微信</string>
+    <string name="receive">从微信接收</string>
+    <string name="is_timeline">是否分享到朋友圈</string>
+    <string name="send_text">发送文本</string>
+    <string name="send_text_default">这段文字发送自微信SDK示例程序</string>
+    <string name="send_img">发送图片</string>
+
+    <string-array name="send_img_item">
+        <item>发送图片的二进制数据</item>
+        <item>发送图片的本地路径</item>
+        <!-- <item>发送图片的URL</item> -->
+    </string-array>
+
+    <string name="send_img_file_not_exist">文件不存在</string>
+    <string name="send_pic">发送照片</string>
+    <string name="send_music">发送音乐</string>
+
+    <string-array name="send_music_item">
+        <item>发送音乐url</item>
+        <item>发送低带宽音乐url</item>
+    </string-array>
+
+    <string name="send_video">发送视频</string>
+
+    <string-array name="send_video_item">
+        <item>发送视频url</item>
+        <item>发送低带宽视频url</item>
+    </string-array>
+
+    <string name="send_webpage">发送网页</string>
+
+    <string-array name="send_webpage_item">
+        <item>发送网页url</item>
+    </string-array>
+
+    <string name="send_appbrand">发送小程序</string>
+
+    <string-array name="send_appbrand_item">
+        <item>发送小程序</item>
+    </string-array>
+
+    <string name="send_appdata">发送app消息</string>
+
+    <string-array name="send_appdata_item">
+        <item>发送app文件本地路径</item>
+        <item>发送app二进制数据</item>
+        <item>发送无附件的app</item>
+    </string-array>
+
+    <string name="send_emoji">发送表情消息</string>
+
+    <string-array name="send_emoji_item">
+        <item>发送表情本地路径</item>
+        <item>发送表情二进制数据</item>
+    </string-array>
+    <string-array name="send_emoji_item_format">
+        <item>发送GIF图片</item>
+        <item>发送非GIF图片</item>
+    </string-array>
+
+    <string name="share_text_to_weixin">回应文本到微信</string>
+    <string name="share_text_default">这段文字回应自微信SDK示例程序</string>
+    <string name="share_url_to_weixin">回应URL到微信</string>
+    <string name="share_pic_to_weixin">回应图片到微信</string>
+    <string name="share_music_to_weixin">回应音乐到微信</string>
+    <string name="share_video_to_weixin">回应视频到微信</string>
+    <string name="share_appdata_to_weixin">回应app消息到微信</string>
+    <string name="register_as_weixin_app_sender">注册微信事件发送器</string>
+    <string name="get_token_from_weixin">获取微信访问Token</string>
+    <string name="unregister_from_weixin">从微信反注册</string>
+    <string name="show_from_wx_tip">这个界面用于显示微信向第三方app请求显示的信息</string>
+    <string name="scan_qrcode_login">扫码登录</string>
+    <string name="auth">微信登录</string>
+    <string name="cancel_auth">取消登录</string>
+    <string name="qrcode_wait_for_scan">扫描二维码登录</string>
+    <string name="qrcode_scanned">点击确认登录</string>
+    <string name="result_succ" formatted="false">登录成功，code=%s</string>
+    <string name="result_normal_err">登录失败，一般错误</string>
+    <string name="result_network_err">登录失败，网络错误</string>
+    <string name="result_json_decode_err">json解码失败</string>
+    <string name="result_user_cancel">用户取消</string>
+    <string name="result_timeout_err">登录失败，超时错误</string>
+    <string name="target_scene">目标场景</string>
+    <string name="target_scene_session">会话</string>
+    <string name="target_scene_timeline">朋友圈</string>
+    <string name="target_scene_favorite">收藏</string>
+
+    <!-- WXPayEntryActivity -->
+    <string name="pay_result_tip">这个界面用于显示第三方app通过微信支付的结果，是是是是全广州你最厉害</string>
+    <string name="pay_result_callback_msg" formatted="false">微信支付结果：%s</string>
+    <string name="pay_success">支付成功</string>
+    <string name="pay_cancel">取消支付</string>
+    <string name="pay_fail">支付失败</string>
+
+    <!-- 订单查询 -->
+    <string name="order_sreach_titile">订单查询</string>
+    <string name="order_all">全部订单</string>
+    <string name="order_success">成功订单</string>
+    <string name="order_fail">失败订单</string>
+    <string name="order_last_month">上个月</string>
+    <string name="order_this_month">本月</string>
+    <string name="order_no_data">当前列表为空</string>
+
+    <!-- 公告中心 -->
+    <string name="notice_title">公告</string>
+
+    <!-- 更新提示 -->
+    <string name="update_title">更新提示</string>
+    <string name="update_btn">更新</string>
+
+
+    <!-- facebook id -->
+    <string name="facebook_app_id">193157664664419</string>
+	<string name="fb_login_protocol_scheme">fb193157664664419</string>
+    
+    <!-- 解析数据出错的提示 -->
+    <string name="json_encode_error">未知错误</string>
+    
+    <!-- 平台配置 -->
+    <string name="platform">Google</string>
+    <string name="channel">Google</string>
+    
+
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fg_bg_s"
+    android:orientation="vertical" >
+    
+     <include
+            android:id="@id/header_login_input"
+            layout="@layout/dialog_header" />
+
+     <TextView 
+         android:id="@id/tv_pay_tips"
+         android:layout_width="wrap_content"
+         android:layout_height="0dp"
+         android:layout_weight="1"
+         android:textSize="@dimen/sdk_main_text_size"
+         android:layout_margin="@dimen/sdk_login_margin_right"
+         android:text="是否用平台进行支付购买？"
+         android:layout_gravity="center_horizontal"
+         />
+     
+     <LinearLayout 
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:layout_marginBottom="30dp"
+         >
+          <Button
+            android:id="@id/btn_cancle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/sdk_login_margin_top"
+            android:background="@drawable/fg_btn_green"
+            android:text="@string/string_pay_cancle"
+            android:textColor="@color/white" />
+         
+          <Button
+            android:id="@id/btn_confrom"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/sdk_login_margin_top"
+            android:background="@drawable/fg_btn_green"
+            android:text="@string/string_pay_confrom"
+            android:textColor="@color/white" />
+          
+     </LinearLayout>
+     
+</LinearLayout>
