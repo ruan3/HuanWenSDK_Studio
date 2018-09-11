@@ -61,6 +61,18 @@
             android:textSize="@dimen/sdk_main_text_size" />
 
         <TextView
+            android:id="@id/tv_pay_explain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/string_pay_tips"
+            android:textColor="@color/bg_yellow"
+            android:textSize="@dimen/sdk_main_text_size" />
+
+
+        <TextView
             android:id="@id/tv_pay_select"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
