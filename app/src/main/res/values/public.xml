@@ -81,6 +81,7 @@
     <public id="0x7f060019" name="btn_confrom" type="id"/>
     <public id="0x7f06016e" name="btn_update" type="id"/>
     <public id="0x7f06000b" name="tv_facebook_login" type="id"/>
+    <public id="0x7f0c00c4" name="tv_pay_explain" type="id"/>
     <!-- drawable -->
     <public id="0x7f02003a" name="fg_logo_portrait" type="drawable"></public>
     <public id="0x7f020000" name="checkbox_style" type="drawable"></public>

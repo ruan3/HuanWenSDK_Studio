@@ -77,4 +77,5 @@
     <item name="btn_confrom" type="id">false</item>
     <item name="btn_update" type="id"></item>
     <item name="tv_facebook_login" type="id"></item>
+    <item name="tv_pay_explain" type="id"></item>
 </resources>
