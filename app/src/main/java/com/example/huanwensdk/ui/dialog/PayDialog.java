@@ -52,6 +52,8 @@ public class PayDialog extends DialogBase implements PayContract.View,GooglePayC
 	PayContract.View payView;
 	
 	List<PayInfo> payInfos;
+
+	LinearLayoutManager layoutManager;
 	
 	Context context;
 	
@@ -259,7 +261,7 @@ public class PayDialog extends DialogBase implements PayContract.View,GooglePayC
 		if(result.equals("1000")){
 			recy_pay_list.setVisibility(View.VISIBLE);
 			payAdapter= new PayAdapter(payInfos);  
-	        LinearLayoutManager layoutManager = new LinearLayoutManager(context);  
+			layoutManager = new LinearLayoutManager(context);
 	         //设置布局管理器  
 	        recy_pay_list.setLayoutManager(layoutManager);  
 	         //设置为垂直布局，这也是默认的  
