@@ -3,6 +3,7 @@ package com.example.huanwensdk.ui.dialog;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -47,6 +48,7 @@ public class PayDialog extends DialogBase implements PayContract.View,GooglePayC
 	TextView tv_pay_tips;
 	String serverCode;
 	String roleLevel;
+	TextView tv_pay_explain;
 	PayContract.View payView;
 	
 	List<PayInfo> payInfos;
@@ -105,7 +107,18 @@ public class PayDialog extends DialogBase implements PayContract.View,GooglePayC
 		
 //		tv_pay_tips = (TextView) dialog.findViewById(R.id.tv_pay_tips);
 		tv_pay_tips = (TextView) dialog.findViewById(ResLoader.getId(context, "tv_pay_tips"));
-		
+
+		tv_pay_explain = dialog.findViewById(ResLoader.getId(context,"tv_pay_explain"));
+		tv_pay_explain.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); // 下划线
+
+		tv_pay_explain.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				//充值说明点击
+				LogUtils.e("充值说明被点击");
+			}
+		});
+
 		tv_title.setText(ResLoader.getString(context, "string_pay_title"));
 		
 		btn_back.setOnClickListener(new OnClickListener() {
