@@ -34,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/string_try_play"
+            android:text="11"
             android:layout_marginRight="15dp"
             android:textSize="@dimen/sdk_main_text_size"
             android:drawableTop="@drawable/fg_sw_icon"
