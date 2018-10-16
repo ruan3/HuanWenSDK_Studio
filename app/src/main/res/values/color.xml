@@ -46,4 +46,10 @@
      
      <!-- 訂單查詢的按鈕颜色 -->
      <color name="order_btn_color">#A0C4F4</color>
+
+    <!--动态权限管理-->
+    <color name="permissionColorGreen">#41c236</color>
+    <color name="permissionColorWhite">#ffffff</color>
+    <color name="permissionBgColorGreenLight">#44A49C</color>
+    <color name="permissionBgColorBlue">#ee447AA4</color>
 </resources>
