@@ -19,16 +19,23 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 
+import com.example.huanwensdk.R;
 import com.example.huanwensdk.ui.dialog.LoginTrialDialog;
 import com.example.huanwensdk.utils.sp.HWConfigSharedPreferences;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+import me.weyye.hipermission.HiPermission;
+import me.weyye.hipermission.PermissionCallback;
+import me.weyye.hipermission.PermissionItem;
 
 /**
  * 
@@ -106,9 +113,9 @@ public class HWUtils {
 		HashMap localHashMap = new HashMap();
 		String str1 = Build.SERIAL;
 		if (ActivityCompat.checkSelfPermission(paramContext, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-		}else{
-			ActivityCompat.requestPermissions((Activity) paramContext,defaultPermission,MY_PERMISSION_REQUEST_CODE);
-		}
+        }else{
+            ActivityCompat.requestPermissions((Activity) paramContext,defaultPermission,MY_PERMISSION_REQUEST_CODE);
+        }
 		TelephonyManager telephonyManager = (TelephonyManager) paramContext
 				.getSystemService(paramContext.TELEPHONY_SERVICE);
 		String str2 = telephonyManager.getDeviceId();
