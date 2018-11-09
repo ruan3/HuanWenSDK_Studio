@@ -40,9 +40,9 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 
 /**
- * 
+ *
  * facebook业务类
- * 
+ *
  * @author Ruan
  * @data: 2018-9-5 上午10:14:43
  * @version: V1.0
@@ -80,7 +80,7 @@ public class FacebookModel implements FacebookContract.FaceBookModel {
 	}
 
 	public void loginTrial(FacebookContract.FaceBookView faceBookView,
-			final String user_token, final String type) {
+						   final String user_token, final String type) {
 		// TODO Auto-generated method stub
 		loginListener = HWControl.getInstance().getLoginListener();
 		context = HWControl.getInstance().getContext();
@@ -103,62 +103,62 @@ public class FacebookModel implements FacebookContract.FaceBookModel {
 		StringRequest stringRequest = new StringRequest(Method.POST,
 				Constant.Third_Party_Login, new Response.Listener<String>() {
 
-					@Override
-					public void onResponse(String response) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "facebook肯定没错--->" + response);
-						exceptionPresenter = new ExceptionPresenter();
-						try {
-							String responseUrl = Uri.decode(response);
-							Gson gson = new Gson();
-							// HWTourLoginResult result =
-							// gson.fromJson(response,
-							// HWTourLoginResult.class);
-							HWTourLoginTrialResult result = gson.fromJson(
-									response, HWTourLoginTrialResult.class);
-							Log.e("Com", "gson解释后数据--->" + result.toString());
-							int code = Integer.parseInt(result.getCode());
-							if (code == 1000) {
-								LogUtils.e("试玩登录的成功-返回字段---->" + responseUrl);
-								// 1000就是成功
-								// 检测数据绑定
-								checkBinding(Integer.parseInt(result
+			@Override
+			public void onResponse(String response) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "facebook肯定没错--->" + response);
+				exceptionPresenter = new ExceptionPresenter();
+				try {
+					String responseUrl = Uri.decode(response);
+					Gson gson = new Gson();
+					// HWTourLoginResult result =
+					// gson.fromJson(response,
+					// HWTourLoginResult.class);
+					HWTourLoginTrialResult result = gson.fromJson(
+							response, HWTourLoginTrialResult.class);
+					Log.e("Com", "gson解释后数据--->" + result.toString());
+					int code = Integer.parseInt(result.getCode());
+					if (code == 1000) {
+						LogUtils.e("试玩登录的成功-返回字段---->" + responseUrl);
+						// 1000就是成功
+						// 检测数据绑定
+						checkBinding(Integer.parseInt(result
 										.getCurrentType()), result.getUserid(),
-										result.getData());
-								// 绑定用户
-								saveUserInfo(result);
-								// 保存截图
-								// HWBitmap.saveTrialUIDBitmap(HWControl.getInstance()
-								// .getContext(), result.getShowid(), result
-								// .getRandomPwd(), ResLoader.getString(
-								// context, "game_name"));
-								// callback回去调用方法那里
-								callLogin(result, loginListener);
-							} else {
-								LogUtils.e("试玩登录的失败-返回字段---->" + response);
-								loginListener.fail(301, result.getMessage());
-							}
-						} catch (JsonSyntaxException e) {
-							exceptionPresenter.tips(context, e);
-						} catch (JsonIOException e) {
-							exceptionPresenter.tips(context, e);
-						} catch (JsonParseException e) {
-							exceptionPresenter.tips(context, e);
-						} catch (Exception e) {
-							// TODO: handle exception
-							exceptionPresenter.tips(context, e);
-						}
-
+								result.getData());
+						// 绑定用户
+						saveUserInfo(result);
+						// 保存截图
+						// HWBitmap.saveTrialUIDBitmap(HWControl.getInstance()
+						// .getContext(), result.getShowid(), result
+						// .getRandomPwd(), ResLoader.getString(
+						// context, "game_name"));
+						// callback回去调用方法那里
+						callLogin(result, loginListener);
+					} else {
+						LogUtils.e("试玩登录的失败-返回字段---->" + response);
+						loginListener.fail(301, result.getMessage());
 					}
-				}, new Response.ErrorListener() {
+				} catch (JsonSyntaxException e) {
+					exceptionPresenter.tips(context, e);
+				} catch (JsonIOException e) {
+					exceptionPresenter.tips(context, e);
+				} catch (JsonParseException e) {
+					exceptionPresenter.tips(context, e);
+				} catch (Exception e) {
+					// TODO: handle exception
+					exceptionPresenter.tips(context, e);
+				}
 
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "出错--->" + error.getMessage());
-						callbackError(error);
-					}
-				}) {
+			}
+		}, new Response.ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "出错--->" + error.getMessage());
+				callbackError(error);
+			}
+		}) {
 			@Override
 			protected Map<String, String> getParams() throws AuthFailureError {
 				Map<String, String> map = new HashMap<String, String>();
@@ -187,13 +187,13 @@ public class FacebookModel implements FacebookContract.FaceBookModel {
 
 	/**
 	 * 设置保存绑定信息
-	 * 
+	 *
 	 * @param paramInt
 	 * @param paramString
 	 * @param paramList
 	 */
 	private void checkBinding(int currentType, String userId,
-			HWBindingUserAccountInfo bindUserList) {
+							  HWBindingUserAccountInfo bindUserList) {
 
 		HWBindingUserRecord localFGBindingUserRecord = new HWBindingUserRecord();
 		localFGBindingUserRecord.setUserId(userId);
@@ -205,7 +205,7 @@ public class FacebookModel implements FacebookContract.FaceBookModel {
 
 	/**
 	 * 保存用户类
-	 * 
+	 *
 	 * @param loginResult
 	 */
 	public void saveUserInfo(HWTourLoginTrialResult loginResult) {
@@ -230,25 +230,36 @@ public class FacebookModel implements FacebookContract.FaceBookModel {
 
 	/**
 	 * 返回给调用
-	 * 
+	 *
 	 * @param result
 	 * @param loginListener
 	 */
 	public void callLogin(HWTourLoginTrialResult result,
-			LoginListener loginListener) {
+						  LoginListener loginListener) {
 
 		User user = new User();
 		user.setLoginType(Integer.parseInt(result.getCurrentType()));
 		user.setSessionId(result.getSessionid());
 		user.setToken(result.getToken());
 		user.setUserId(result.getUserid());
-		loginListener.onLogin(user);
+		loginListener.onLogin(user,signLogin(user));
 		faceBookView.FacebookLoginResult(0, "登陸成功");// 回调给dialog界面
+	}
+
+	private String signLogin(User user){
+		StringBuilder sign = new StringBuilder();
+		sign.append(user.getUserId());
+		sign.append(user.getToken());
+		sign.append(user.getSessionId());
+		sign.append(user.getLoginType());
+		String loginSign = MD5.getMD5(sign.toString());
+		LogUtils.e("生成Login签名---->"+loginSign);
+		return loginSign;
 	}
 
 	/**
 	 * 返回网络请求错误
-	 * 
+	 *
 	 * @param error
 	 */
 	public void callbackError(VolleyError error) {

@@ -49,7 +49,7 @@ public class MemberLoginModel implements MemberLoginContract.MemberLoginModel {
 	MemberLoginContract.MemberLoginView loginView;
 	LoginListener loginListener;
 	private String gameCode;
-	
+
 	ExceptionContract.ExceptionPresenter exceptionPresenter;
 
 	@Override
@@ -58,7 +58,7 @@ public class MemberLoginModel implements MemberLoginContract.MemberLoginModel {
 		context = HWControl.getInstance().getContext();
 		this.loginView = loginView;
 		loginListener = HWControl.getInstance().getLoginListener();
-		
+
 		if(!Validator.isEmail(user)){
 			Toast.makeText(context, "请输入正确邮箱", Toast.LENGTH_SHORT).show();
 			loginView.loginFail();
@@ -85,101 +85,101 @@ public class MemberLoginModel implements MemberLoginContract.MemberLoginModel {
 				HWControl.getInstance().getContext()).getLanguage();
 
 		// 请求网络
-				StringRequest stringRequest = new StringRequest(Method.POST,
-						Constant.HW_LOGIN_URL, new Response.Listener<String>() {
+		StringRequest stringRequest = new StringRequest(Method.POST,
+				Constant.HW_LOGIN_URL, new Response.Listener<String>() {
 
-							@Override
-							public void onResponse(String response) {
-								// TODO Auto-generated method stub
-								Log.e("Com", "登录肯定没错--->" + response);
-								exceptionPresenter = new ExceptionPresenter();
-								try{
-									Gson gson = new Gson();
-									HWTourLoginTrialResult result = gson.fromJson(response,
-											HWTourLoginTrialResult.class);
-									Log.e("Com", "gson解释后数据--->" + result.toString());
-									int code = Integer.parseInt(result.getCode());
-									if (code == 1000) {
-										// 1000就是成功
-										// 检测数据绑定
-										checkBinding(
-												Integer.parseInt(result.getCurrentType()),
-												result.getUserid(), result.getData());
-										saveUserInfo(result);//保存用户
-										callLogin(result, loginListener);
-										//根据返回状态，显示公告框
-										Notice notice = result.getNotice();
-										if(notice!=null){
-											if(result.getNotice().getVnotice_is_show()!=null){
-												if(result.getNotice().getVnotice_is_show().equals("1")){
-													NoticeDialog.getInstance().show();
-													NoticeDialog.getInstance().getText(result.getNotice().getNotice_info());
-												}
-											}
-										}
-										
-										LogUtils.e("登录成功返回字段---->"+response);
-									}else if(code == 1001){
-										loginListener.fail(301,result.getMessage());
-										loginView.loginFail();
-										Toast.makeText(context, result.getMessage(), Toast.LENGTH_SHORT).show();
-									}else{
-										Toast.makeText(context, result.getMessage(), Toast.LENGTH_SHORT).show();
-										loginListener.fail(301,result.getMessage());
-										LogUtils.e("登录失败返回字段---->"+response);
-										loginView.loginFail();
-									}
-								}catch(JsonSyntaxException e){
-									exceptionPresenter.tips(context, e);
-								}catch(JsonIOException e){
-									exceptionPresenter.tips(context, e);
-								}catch(JsonParseException e){
-									exceptionPresenter.tips(context, e);
-								}catch (Exception e) {
-									// TODO: handle exception
-									exceptionPresenter.tips(context, e);
+			@Override
+			public void onResponse(String response) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "登录肯定没错--->" + response);
+				exceptionPresenter = new ExceptionPresenter();
+				try{
+					Gson gson = new Gson();
+					HWTourLoginTrialResult result = gson.fromJson(response,
+							HWTourLoginTrialResult.class);
+					Log.e("Com", "gson解释后数据--->" + result.toString());
+					int code = Integer.parseInt(result.getCode());
+					if (code == 1000) {
+						// 1000就是成功
+						// 检测数据绑定
+						checkBinding(
+								Integer.parseInt(result.getCurrentType()),
+								result.getUserid(), result.getData());
+						saveUserInfo(result);//保存用户
+						callLogin(result, loginListener);
+						//根据返回状态，显示公告框
+						Notice notice = result.getNotice();
+						if(notice!=null){
+							if(result.getNotice().getVnotice_is_show()!=null){
+								if(result.getNotice().getVnotice_is_show().equals("1")){
+									NoticeDialog.getInstance().show();
+									NoticeDialog.getInstance().getText(result.getNotice().getNotice_info());
 								}
-								
 							}
-						}, new Response.ErrorListener() {
+						}
 
-							@Override
-							public void onErrorResponse(VolleyError error) {
-								// TODO Auto-generated method stub
-								Log.e("Com", "出错--->" + error.getMessage());
-								callbackError(error);
-								loginListener.fail(301,error.getMessage());
-							}
-						}) {
-					@Override
-					protected Map<String, String> getParams() throws AuthFailureError {
-						Map<String, String> map = new HashMap<String, String>();
-						map.put("machineid", machineid);
-						map.put("gamecode", gamecode);
-						map.put("comefrom", comefrom);
-						map.put("timestamp", timestamp);
-						map.put("platform", platform);
-						map.put("username", user);
-						map.put("password", pwd);
-						map.put("cpu", cpu);
-						map.put("signature", signature);
-						map.put("language", language);
-						map.put("channel", channel);
-
-						LogUtils.e("登录请求地址---->"+Constant.HW_LOGIN_URL);
-						LogUtils.e("登录请求字段---->"+map.toString());
-						
-						return map;
+						LogUtils.e("登录成功返回字段---->"+response);
+					}else if(code == 1001){
+						loginListener.fail(301,result.getMessage());
+						loginView.loginFail();
+						Toast.makeText(context, result.getMessage(), Toast.LENGTH_SHORT).show();
+					}else{
+						Toast.makeText(context, result.getMessage(), Toast.LENGTH_SHORT).show();
+						loginListener.fail(301,result.getMessage());
+						LogUtils.e("登录失败返回字段---->"+response);
+						loginView.loginFail();
 					}
-				};
+				}catch(JsonSyntaxException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonIOException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonParseException e){
+					exceptionPresenter.tips(context, e);
+				}catch (Exception e) {
+					// TODO: handle exception
+					exceptionPresenter.tips(context, e);
+				}
 
-				RequestQueueHepler.getInstance().getQueue().add(stringRequest);
+			}
+		}, new Response.ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "出错--->" + error.getMessage());
+				callbackError(error);
+				loginListener.fail(301,error.getMessage());
+			}
+		}) {
+			@Override
+			protected Map<String, String> getParams() throws AuthFailureError {
+				Map<String, String> map = new HashMap<String, String>();
+				map.put("machineid", machineid);
+				map.put("gamecode", gamecode);
+				map.put("comefrom", comefrom);
+				map.put("timestamp", timestamp);
+				map.put("platform", platform);
+				map.put("username", user);
+				map.put("password", pwd);
+				map.put("cpu", cpu);
+				map.put("signature", signature);
+				map.put("language", language);
+				map.put("channel", channel);
+
+				LogUtils.e("登录请求地址---->"+Constant.HW_LOGIN_URL);
+				LogUtils.e("登录请求字段---->"+map.toString());
+
+				return map;
+			}
+		};
+
+		RequestQueueHepler.getInstance().getQueue().add(stringRequest);
 
 	}
-	
+
 	/**
 	 * 设置保存绑定信息
-	 * 
+	 *
 	 * @param paramInt
 	 * @param paramString
 	 * @param paramList
@@ -222,30 +222,30 @@ public class MemberLoginModel implements MemberLoginContract.MemberLoginModel {
 	*/
 	/**
 	 * 设置保存绑定信息
-	 * 
+	 *
 	 * @param paramInt
 	 * @param paramString
 	 * @param paramList
 	 */
 	private void checkBinding(int currentType, String userId,
-			HWBindingUserAccountInfo bindUserList) {
+							  HWBindingUserAccountInfo bindUserList) {
 		if(bindUserList!=null){
-			
+
 			HWBindingUserRecord localFGBindingUserRecord = new HWBindingUserRecord();
 			localFGBindingUserRecord.setUserId(userId);
 			localFGBindingUserRecord.setUserTypePhone(bindUserList.getType());
 			localFGBindingUserRecord
-			.setUserPhoneName(bindUserList
-					.getUsername());
+					.setUserPhoneName(bindUserList
+							.getUsername());
 			// 然后保存到数据库
 			DBUtils.getInstance().saveBindUserRecord(localFGBindingUserRecord);
 		}
 	}
-	
-	
+
+
 	/**
 	 * 保存用户类
-	 * 
+	 *
 	 * @param loginResult
 	 */
 	public void saveUserInfo(HWTourLoginTrialResult loginResult) {
@@ -266,34 +266,45 @@ public class MemberLoginModel implements MemberLoginContract.MemberLoginModel {
 //		GuestFindDialog.getInstance().initData(infoUser);
 
 	}
-	
+
 	/**
 	 * 返回给调用
 	 * @param result
 	 * @param loginListener
 	 */
 	public void callLogin(HWTourLoginTrialResult result,LoginListener loginListener){
-		
+
 		User user = new User();
 		user.setLoginType(Integer.parseInt(result.getCurrentType()));
 		user.setSessionId(result.getSessionid());
 		user.setToken(result.getToken());
 		user.setUserId(result.getUserid());
-		loginListener.onLogin(user);
+		loginListener.onLogin(user,signLogin(user));
 //		loginView.callBackRegiterSucess();//回调给dialog界面
 		LoginDialog.getInstance().close();
 		loginView.loginSuccess();//返回给dialog
 		LoginDialog.getInstance().close();
 	}
-	
+
+	private String signLogin(User user){
+		StringBuilder sign = new StringBuilder();
+		sign.append(user.getUserId());
+		sign.append(user.getToken());
+		sign.append(user.getSessionId());
+		sign.append(user.getLoginType());
+		String loginSign = MD5.getMD5(sign.toString());
+		LogUtils.e("生成Login签名---->"+loginSign);
+		return loginSign;
+	}
+
 	/**
 	 * 返回网络请求错误
 	 * @param error
 	 */
 	public void callbackError(VolleyError error){
-		
+
 		String errorStr = VolleyErrorHelper.getMessage(error, context);
-		
+
 		loginListener.fail(101, errorStr);
 		loginView.loginFail();//返回给dialog
 //		loginView.callBackRegiterFail();//回调给dialog界面

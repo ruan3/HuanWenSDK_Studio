@@ -48,9 +48,9 @@ public class LoginTrialModel implements InitLoginTrial.LoginTrialModel {
 	InitLoginTrial.LoginTrialView loginTrialView;
 
 	private String gameCode;
-	
+
 	ExceptionContract.ExceptionPresenter exceptionPresenter;
-	
+
 	@Override
 	public void loginTrial(InitLoginTrial.LoginTrialView loginTrialView) {
 		// TODO Auto-generated method stub
@@ -76,74 +76,74 @@ public class LoginTrialModel implements InitLoginTrial.LoginTrialModel {
 		StringRequest stringRequest = new StringRequest(Method.POST,
 				Constant.HW_LOGIN_TRIAL, new Response.Listener<String>() {
 
-					@Override
-					public void onResponse(String response) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "试玩肯定没错--->" + response);
-						exceptionPresenter = new ExceptionPresenter();
-						try{
-							String responseUrl = Uri.decode(response);
-							Gson gson = new Gson();
+			@Override
+			public void onResponse(String response) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "试玩肯定没错--->" + response);
+				exceptionPresenter = new ExceptionPresenter();
+				try{
+					String responseUrl = Uri.decode(response);
+					Gson gson = new Gson();
 //							HWTourLoginResult result = gson.fromJson(response,
 //									HWTourLoginResult.class);
-							HWTourLoginTrialResult result = gson.fromJson(response,
-									HWTourLoginTrialResult.class);
-							Log.e("Com", "gson解释后数据--->" + result.toString());
-							int code = Integer.parseInt(result.getCode());
-							if (code == 1000) {
-								LogUtils.e("试玩登录的成功-返回字段---->" + responseUrl);
-								// 1000就是成功
-								// 检测数据绑定
-								checkBinding(
-										Integer.parseInt(result.getCurrentType()),
-										result.getUserid(), result.getData());
-								// 绑定用户
-								saveUserInfo(result);
-								if(result.getRandomPwd()!=null){
-									// 保存截图
-									HWBitmap.saveTrialUIDBitmap(HWControl.getInstance()
-											.getContext(), result.getShowid(), result
-											.getRandomPwd(), ResLoader.getString(
-											context, "game_name"));
-								}
-								//根据返回状态，显示公告框
-								Notice notice = result.getNotice();
-								if(notice!=null){
-									if(result.getNotice().getVnotice_is_show()!=null){
-										if(result.getNotice().getVnotice_is_show().equals("1")){
-											NoticeDialog.getInstance().show();
-											NoticeDialog.getInstance().getText(result.getNotice().getNotice_info());
-										}
-									}
-								}
-								
-								
-								// callback回去调用方法那里
-								callLogin(result, loginListener);
-							} else {
-								LogUtils.e("试玩登录的失败-返回字段---->" + response);
-								loginListener.fail(301, result.getMessage());
-							}
-						}catch(JsonSyntaxException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonIOException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonParseException e){
-							exceptionPresenter.tips(context, e);
-						}catch (Exception e) {
-							exceptionPresenter.tips(context, e);
+					HWTourLoginTrialResult result = gson.fromJson(response,
+							HWTourLoginTrialResult.class);
+					Log.e("Com", "gson解释后数据--->" + result.toString());
+					int code = Integer.parseInt(result.getCode());
+					if (code == 1000) {
+						LogUtils.e("试玩登录的成功-返回字段---->" + responseUrl);
+						// 1000就是成功
+						// 检测数据绑定
+						checkBinding(
+								Integer.parseInt(result.getCurrentType()),
+								result.getUserid(), result.getData());
+						// 绑定用户
+						saveUserInfo(result);
+						if(result.getRandomPwd()!=null){
+							// 保存截图
+							HWBitmap.saveTrialUIDBitmap(HWControl.getInstance()
+									.getContext(), result.getShowid(), result
+									.getRandomPwd(), ResLoader.getString(
+									context, "game_name"));
 						}
-						
-					}
-				}, new Response.ErrorListener() {
+						//根据返回状态，显示公告框
+						Notice notice = result.getNotice();
+						if(notice!=null){
+							if(result.getNotice().getVnotice_is_show()!=null){
+								if(result.getNotice().getVnotice_is_show().equals("1")){
+									NoticeDialog.getInstance().show();
+									NoticeDialog.getInstance().getText(result.getNotice().getNotice_info());
+								}
+							}
+						}
 
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "出错--->" + error.getMessage());
-						callbackError(error);
+
+						// callback回去调用方法那里
+						callLogin(result, loginListener);
+					} else {
+						LogUtils.e("试玩登录的失败-返回字段---->" + response);
+						loginListener.fail(301, result.getMessage());
 					}
-				}) {
+				}catch(JsonSyntaxException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonIOException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonParseException e){
+					exceptionPresenter.tips(context, e);
+				}catch (Exception e) {
+					exceptionPresenter.tips(context, e);
+				}
+
+			}
+		}, new Response.ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "出错--->" + error.getMessage());
+				callbackError(error);
+			}
+		}) {
 			@Override
 			protected Map<String, String> getParams() throws AuthFailureError {
 				Map<String, String> map = new HashMap<String, String>();
@@ -170,7 +170,7 @@ public class LoginTrialModel implements InitLoginTrial.LoginTrialModel {
 
 	/**
 	 * 设置保存绑定信息
-	 * 
+	 *
 	 * @param paramInt
 	 * @param paramString
 	 * @param paramList
@@ -183,7 +183,7 @@ public class LoginTrialModel implements InitLoginTrial.LoginTrialModel {
 //	 // 循环或许Data里面的数据
 //	 for (HWBindingUserAccountInfo localFGBindingUserAccountInfo :
 //	 bindUserList) {
-//	
+//
 //	 int type = localFGBindingUserAccountInfo.getType();
 //	 if (type == 4) {
 //	 localFGBindingUserRecord.setUserTypePhone(type);
@@ -191,16 +191,16 @@ public class LoginTrialModel implements InitLoginTrial.LoginTrialModel {
 //	 .setUserPhoneName(localFGBindingUserAccountInfo
 //	 .getUsername());
 //	 }
-//	
+//
 //	 if (type == 3) {
 //	 localFGBindingUserRecord.setUserTypeEmail(type);
 //	 localFGBindingUserRecord
 //	 .setUserEmailName(localFGBindingUserAccountInfo
 //	 .getUsername());
 //	 }
-//	
+//
 //	 if (type != 5) {
-//	
+//
 //	 }
 //	 localFGBindingUserRecord.setUserTypeFacebook(type);
 //	 localFGBindingUserRecord
@@ -214,13 +214,13 @@ public class LoginTrialModel implements InitLoginTrial.LoginTrialModel {
 
 	/**
 	 * 设置保存绑定信息
-	 * 
+	 *
 	 * @param paramInt
 	 * @param paramString
 	 * @param paramList
 	 */
 	private void checkBinding(int currentType, String userId,
-			HWBindingUserAccountInfo bindUserList) {
+							  HWBindingUserAccountInfo bindUserList) {
 
 		HWBindingUserRecord localFGBindingUserRecord = new HWBindingUserRecord();
 		localFGBindingUserRecord.setUserId(userId);
@@ -232,7 +232,7 @@ public class LoginTrialModel implements InitLoginTrial.LoginTrialModel {
 
 	/**
 	 * 保存用户类
-	 * 
+	 *
 	 * @param loginResult
 	 */
 	public void saveUserInfo(HWTourLoginTrialResult loginResult) {
@@ -256,25 +256,36 @@ public class LoginTrialModel implements InitLoginTrial.LoginTrialModel {
 
 	/**
 	 * 返回给调用
-	 * 
+	 *
 	 * @param result
 	 * @param loginListener
 	 */
 	public void callLogin(HWTourLoginTrialResult result,
-			LoginListener loginListener) {
+						  LoginListener loginListener) {
 		LogUtils.e("试玩登录---->"+loginListener);
 		User user = new User();
 		user.setLoginType(Integer.parseInt(result.getCurrentType()));
 		user.setSessionId(result.getSessionid());
 		user.setToken(result.getToken());
 		user.setUserId(result.getUserid());
-		loginListener.onLogin(user);
+		loginListener.onLogin(user,signLogin(user));
 		loginTrialView.callbackLogin();// 回调给dialog界面
+	}
+
+	private String signLogin(User user){
+		StringBuilder sign = new StringBuilder();
+		sign.append(user.getUserId());
+		sign.append(user.getToken());
+		sign.append(user.getSessionId());
+		sign.append(user.getLoginType());
+		String loginSign = MD5.getMD5(sign.toString());
+		LogUtils.e("生成Login签名---->"+loginSign);
+		return loginSign;
 	}
 
 	/**
 	 * 返回网络请求错误
-	 * 
+	 *
 	 * @param error
 	 */
 	public void callbackError(VolleyError error) {
