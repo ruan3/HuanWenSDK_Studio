@@ -117,7 +117,7 @@ public class PayDialog extends DialogBase implements PayContract.View,GooglePayC
 			@Override
 			public void onClick(View view) {
 				//充值说明点击
-				LogUtils.e("充值说明被点击");
+				PayExplainDialog.getInstance().show();
 			}
 		});
 
@@ -260,17 +260,17 @@ public class PayDialog extends DialogBase implements PayContract.View,GooglePayC
 		
 		if(result.equals("1000")){
 			recy_pay_list.setVisibility(View.VISIBLE);
-			payAdapter= new PayAdapter(payInfos);  
-			layoutManager = new LinearLayoutManager(context);
-	         //设置布局管理器  
-	        recy_pay_list.setLayoutManager(layoutManager);  
-	         //设置为垂直布局，这也是默认的  
-	        layoutManager.setOrientation(OrientationHelper.HORIZONTAL);  
-	         //设置Adapter  
-	        recy_pay_list.setAdapter( payAdapter);  
-			LogUtils.e("获取支付列表成功---->"+payInfos.size());
 			tv_pay_tips.setVisibility(View.GONE);
-			
+			payAdapter= new PayAdapter(payInfos);
+			layoutManager = new LinearLayoutManager(context);
+			//设置布局管理器
+			recy_pay_list.setLayoutManager(layoutManager);
+			//设置为垂直布局，这也是默认的
+			layoutManager.setOrientation(OrientationHelper.HORIZONTAL);
+			//设置Adapter
+			recy_pay_list.setAdapter( payAdapter);
+			LogUtils.e("获取支付列表成功---->"+payInfos.size());
+
 			
 			/**
 			 * 循环如果是google支付的就是初始化谷歌

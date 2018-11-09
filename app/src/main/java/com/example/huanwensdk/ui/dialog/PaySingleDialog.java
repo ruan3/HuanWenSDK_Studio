@@ -263,6 +263,8 @@ public class PaySingleDialog extends DialogBase implements PayContract.View,
 		// TODO Auto-generated method stub
 
 		if (result.equals("1000")) {
+			recy_pay_list.setVisibility(View.VISIBLE);
+			tv_pay_tips.setVisibility(View.GONE);
 			payAdapter = new PaySingleChannelAdatper(payInfos, paySingleView,
 					this);
 			LinearLayoutManager layoutManager = new LinearLayoutManager(context);
@@ -273,8 +275,7 @@ public class PaySingleDialog extends DialogBase implements PayContract.View,
 			// 设置Adapter
 			recy_pay_list.setAdapter(payAdapter);
 			LogUtils.e("获取支付列表成功---->" + payInfos.size());
-			tv_pay_tips.setVisibility(View.GONE);
-			
+
 			/**
 			 * 循环如果是google支付的就是初始化谷歌
 			 */
@@ -289,6 +290,7 @@ public class PaySingleDialog extends DialogBase implements PayContract.View,
 		} else {
 			LogUtils.e("获取支付列表失败----->" + result);
 			tv_pay_tips.setVisibility(View.VISIBLE);
+			recy_pay_list.setVisibility(View.GONE);
 		}
 
 	}
@@ -324,7 +326,7 @@ public class PaySingleDialog extends DialogBase implements PayContract.View,
 	@Override
 	public void payResult(int code, String msg) {
 		// TODO Auto-generated method stub
-		loading.setVisibility(View.VISIBLE);
+		loading.setVisibility(View.GONE);
 		if (code == 1000) {
 			Ailpresenter.getPayResult(serverCode, orderId, paySingleView);
 		} else if(code == 1110){
@@ -516,9 +518,9 @@ public class PaySingleDialog extends DialogBase implements PayContract.View,
 	@Override
 	public void consumeResult(int code, String msg, String orderId) {
 		// TODO Auto-generated method stub
-		
 		if(code == 1000){
-			LogUtils.e("谷歌支付消费成功");
+            loading.setVisibility(View.VISIBLE);
+            LogUtils.e("谷歌支付消费成功");
 		}else{
 			LogUtils.e("谷歌支付消费失败");
 		}
