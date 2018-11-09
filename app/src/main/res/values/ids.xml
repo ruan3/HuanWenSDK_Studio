@@ -83,5 +83,9 @@
     <item name="tv_pay_item_desc" type="id"></item>
     <item name="tv_pay_item_currency" type="id"></item>
     <item name="tv_pay_item_money" type="id"></item>
-
+    <item name="tvDesc" type="id">false</item>
+    <item name="tvTitle" type="id">false</item>
+    <item name="gvPermission" type="id">false</item>
+    <item name="goto_settings" type="id">false</item>
+    <item name="llRoot" type="id">false</item>
 </resources>
