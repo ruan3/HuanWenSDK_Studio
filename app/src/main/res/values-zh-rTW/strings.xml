@@ -18,7 +18,7 @@
     <string name="string_forget_psd">忘記密碼？</string>
     <string name="string_try_id">試玩賬號找回</string>
     <string name="string_comfirm_psd">請再次輸入密碼</string>
-    <string name="string_third_login">等三方登錄</string>
+    <string name="string_third_login">第三方登錄</string>
     <string name="string_facebook_login">fookback登錄</string>
 
     <!-- 会员中心 -->
@@ -71,6 +71,7 @@
     <string name="string_pay_title">充值中心</string>
     <string name="string_pay_role_name">充值角色：</string>
     <string name="string_pay_user">充值賬號：</string>
+    <string name="string_pay_tips">充值說明</string>
     <string name="string_pay_select_channel">選擇充值方式</string>
     <string name="string_pay_aipay">支付寶</string>
     <string name="string_pay_weixin_pay">微信支付</string>
