@@ -50,7 +50,7 @@ public class WXModel implements WXPayContract.WXPayModel {
 	PayOrderBean.Data order;
 	private String gameCode;
 	PaySingleContract.View paySingleView;
-	
+
 	ExceptionContract.ExceptionPresenter exceptionPresenter;
 
 	/**
@@ -93,7 +93,7 @@ public class WXModel implements WXPayContract.WXPayModel {
 	 */
 	@Override
 	public void getPayList(final String serverCode, final String roleId,
-			final WXPayContract.WXPayView payView) {
+						   final WXPayContract.WXPayView payView) {
 		// TODO Auto-generated method stub
 
 		this.payView = payView;
@@ -130,51 +130,51 @@ public class WXModel implements WXPayContract.WXPayModel {
 		StringRequest stringRequest = new StringRequest(Method.POST,
 				Constant.HW_PAY_LIST, new Response.Listener<String>() {
 
-					@Override
-					public void onResponse(String response) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "获取支付列表肯定没错--->" + response);
-						exceptionPresenter = new ExceptionPresenter();
-						try{
-							Gson gson = new Gson();
-							PayItemListBean result = gson.fromJson(response,
-									PayItemListBean.class);
-							Log.e("Com", "gson解释后数据--->" + result.toString());
-							int code = Integer.parseInt(result.getCode());
-							if (code == 1000) {
-								// 1000就是成功
-								LogUtils.e("获取支付列表成功返回字段---->" + response);
-								payView.getPayList(code, result.getData());
-								if (paySingleView != null) {
-									paySingleView.getPayList(code, result.getData());
-								}
-							} else {
-								LogUtils.e("获取支付列表返回字段---->" + response);
-								if (paySingleView != null) {
-									paySingleView.getPayList(code, result.getData());
-								}
-								payView.getPayList(code, result.getData());
-							}
-						}catch(JsonSyntaxException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonIOException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonParseException e){
-							exceptionPresenter.tips(context, e);
-						}catch (Exception e) {
-							// TODO: handle exception
-							exceptionPresenter.tips(context, e);
+			@Override
+			public void onResponse(String response) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "获取支付列表肯定没错--->" + response);
+				exceptionPresenter = new ExceptionPresenter();
+				try{
+					Gson gson = new Gson();
+					PayItemListBean result = gson.fromJson(response,
+							PayItemListBean.class);
+					Log.e("Com", "gson解释后数据--->" + result.toString());
+					int code = Integer.parseInt(result.getCode());
+					if (code == 1000) {
+						// 1000就是成功
+						LogUtils.e("获取支付列表成功返回字段---->" + response);
+						payView.getPayList(code, result.getData());
+						if (paySingleView != null) {
+							paySingleView.getPayList(code, result.getData());
 						}
-						
+					} else {
+						LogUtils.e("获取支付列表返回字段---->" + response);
+						if (paySingleView != null) {
+							paySingleView.getPayList(code, result.getData());
+						}
+						payView.getPayList(code, result.getData());
 					}
-				}, new Response.ErrorListener() {
+				}catch(JsonSyntaxException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonIOException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonParseException e){
+					exceptionPresenter.tips(context, e);
+				}catch (Exception e) {
+					// TODO: handle exception
+					exceptionPresenter.tips(context, e);
+				}
 
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "出错--->" + error.getMessage());
-					}
-				}) {
+			}
+		}, new Response.ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "出错--->" + error.getMessage());
+			}
+		}) {
 			@Override
 			protected Map<String, String> getParams() throws AuthFailureError {
 				Map<String, String> map = new HashMap<String, String>();
@@ -210,7 +210,7 @@ public class WXModel implements WXPayContract.WXPayModel {
 	 */
 	@Override
 	public void getOrder(final String serverCode, final String roleId,
-			DataBean dataBean, PaySingleContract.View paySingleView) {
+						 DataBean dataBean, PaySingleContract.View paySingleView) {
 		// TODO Auto-generated method stub
 		context = HWControl.getInstance().getContext();
 		this.paySingleView = paySingleView;
@@ -247,48 +247,48 @@ public class WXModel implements WXPayContract.WXPayModel {
 		StringRequest stringRequest = new StringRequest(Method.POST,
 				Constant.HW_GET_WECHAT_ORDER, new Response.Listener<String>() {
 
-					@Override
-					public void onResponse(String response) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "获取支付订单肯定没错--->" + response);
-						exceptionPresenter = new ExceptionPresenter();
-						try{
-							Gson gson = new Gson();
-							WXPayOrderBean result = gson.fromJson(response,
-									WXPayOrderBean.class);
-							Log.e("Com", "gson解释后数据--->" + result.toString());
-							int code = Integer.parseInt(result.getCode());
-							if (code == 1000) {
-								// 1000就是成功
-								LogUtils.e("获取支付订单成功返回字段---->" + response);
-								// ParseOrder(result);
-								pay(result);
-								//调用微信支付前，先保存订单号
+			@Override
+			public void onResponse(String response) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "获取支付订单肯定没错--->" + response);
+				exceptionPresenter = new ExceptionPresenter();
+				try{
+					Gson gson = new Gson();
+					WXPayOrderBean result = gson.fromJson(response,
+							WXPayOrderBean.class);
+					Log.e("Com", "gson解释后数据--->" + result.toString());
+					int code = Integer.parseInt(result.getCode());
+					if (code == 1000) {
+						// 1000就是成功
+						LogUtils.e("获取支付订单成功返回字段---->" + response);
+						// ParseOrder(result);
+						pay(result);
+						//调用微信支付前，先保存订单号
 //								HWConfigSharedPreferences.getInstance(context).setOrderId(result.getOrderid());
-							} else if (code == 1001) {
-							} else {
-								LogUtils.e("获取支付订单返回字段---->" + response);
-							}
-						}catch(JsonSyntaxException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonIOException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonParseException e){
-							exceptionPresenter.tips(context, e);
-						}catch (Exception e) {
-							// TODO: handle exception
-							exceptionPresenter.tips(context, e);
-						}
-						
+					} else if (code == 1001) {
+					} else {
+						LogUtils.e("获取支付订单返回字段---->" + response);
 					}
-				}, new Response.ErrorListener() {
+				}catch(JsonSyntaxException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonIOException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonParseException e){
+					exceptionPresenter.tips(context, e);
+				}catch (Exception e) {
+					// TODO: handle exception
+					exceptionPresenter.tips(context, e);
+				}
 
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "出错--->" + error.getMessage());
-					}
-				}) {
+			}
+		}, new Response.ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "出错--->" + error.getMessage());
+			}
+		}) {
 			@Override
 			protected Map<String, String> getParams() throws AuthFailureError {
 				Map<String, String> map = new HashMap<String, String>();
@@ -336,7 +336,7 @@ public class WXModel implements WXPayContract.WXPayModel {
 	}
 
 	String extraData = "";
-	
+
 	/**
 	 * 请求后台进行双向验证
 	 */
@@ -353,69 +353,69 @@ public class WXModel implements WXPayContract.WXPayModel {
 		extraData = HWControl.getInstance().getExtraData();
 		final String platform = ResLoader.getString(context, "platform");
 		final String version = "1.0";// 暂时固定
-		
+
 		// 请求网络
 		StringRequest stringRequest = new StringRequest(Method.POST,
 				Constant.HW_CHECK_PAY, new Response.Listener<String>() {
 
-					@Override
-					public void onResponse(String response) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "获取支付验证肯定没错--->" + response);
-						exceptionPresenter = new ExceptionPresenter();
-						try{
-							Gson gson = new Gson();
-							PayItemListBean result = gson.fromJson(response,
-									PayItemListBean.class);
-							Log.e("Com", "gson解释后数据--->" + result.toString());
-							int code = Integer.parseInt(result.getCode());
-							//主要走到双验证，就说明orderid没作用了
+			@Override
+			public void onResponse(String response) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "获取支付验证肯定没错--->" + response);
+				exceptionPresenter = new ExceptionPresenter();
+				try{
+					Gson gson = new Gson();
+					PayItemListBean result = gson.fromJson(response,
+							PayItemListBean.class);
+					Log.e("Com", "gson解释后数据--->" + result.toString());
+					int code = Integer.parseInt(result.getCode());
+					//主要走到双验证，就说明orderid没作用了
 //							HWConfigSharedPreferences.getInstance(context).setOrderId("");
-							if (code == 1000) {
-								// 1000就是成功
-								LogUtils.e("获取支付验证成功返回字段---->" + response);
-								payView.getPayStatus(1000, result.getMessage());
-								if (paySingleView != null) {
-									paySingleView.getPayStatus(1000,
-											result.getMessage());
-								}
-							} else {
-								LogUtils.e("获取支付验证返回字段---->" + response);
-								payView.getPayStatus(code, result.getMessage());
-								if (paySingleView != null) {
-									paySingleView.getPayStatus(code,
-											result.getMessage());
-								}
-							}
-						}catch(JsonSyntaxException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonIOException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonParseException e){
-							exceptionPresenter.tips(context, e);
-						}catch (Exception e) {
-							// TODO: handle exception
-							exceptionPresenter.tips(context, e);
-						}
-						
-					}
-				}, new Response.ErrorListener() {
-
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "出错--->" + error.getMessage());
-						payView.getPayStatus(10014, error.getMessage());
-						//主要能走到双验证,就说明orderid已经没作用了
-//						HWConfigSharedPreferences.getInstance(context).setOrderId("");
-						
+					if (code == 1000) {
+						// 1000就是成功
+						LogUtils.e("获取支付验证成功返回字段---->" + response);
+						payView.getPayStatus(1000, result.getMessage());
 						if (paySingleView != null) {
-
-							paySingleView.getPayStatus(10014,
-									error.getMessage());
+							paySingleView.getPayStatus(1000,
+									result.getMessage());
+						}
+					} else {
+						LogUtils.e("获取支付验证返回字段---->" + response);
+						payView.getPayStatus(code, result.getMessage());
+						if (paySingleView != null) {
+							paySingleView.getPayStatus(code,
+									result.getMessage());
 						}
 					}
-				}) {
+				}catch(JsonSyntaxException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonIOException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonParseException e){
+					exceptionPresenter.tips(context, e);
+				}catch (Exception e) {
+					// TODO: handle exception
+					exceptionPresenter.tips(context, e);
+				}
+
+			}
+		}, new Response.ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "出错--->" + error.getMessage());
+				payView.getPayStatus(10014, error.getMessage());
+				//主要能走到双验证,就说明orderid已经没作用了
+//						HWConfigSharedPreferences.getInstance(context).setOrderId("");
+
+				if (paySingleView != null) {
+
+					paySingleView.getPayStatus(10014,
+							error.getMessage());
+				}
+			}
+		}) {
 			@Override
 			protected Map<String, String> getParams() throws AuthFailureError {
 				Map<String, String> map = new HashMap<String, String>();
@@ -462,59 +462,59 @@ public class WXModel implements WXPayContract.WXPayModel {
 		StringRequest stringRequest = new StringRequest(Method.POST,
 				Constant.HW_CHECK_COIN, new Response.Listener<String>() {
 
-					@Override
-					public void onResponse(String response) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "获取支付验证肯定没错--->" + response);
-						exceptionPresenter = new ExceptionPresenter();
-						try{
-							Gson gson = new Gson();
-							PayItemListBean result = gson.fromJson(response,
-									PayItemListBean.class);
-							Log.e("Com", "gson解释后数据--->" + result.toString());
-							int code = Integer.parseInt(result.getCode());
-							if (code == 1000) {
-								// 1000就是成功
-								LogUtils.e("获取支付验证成功返回字段---->" + response);
-								coinView.getPlatFormResult(code, result.getPoint(),dataBean,channel);
-								if (paySingleView != null) {
-									paySingleView.getPayStatus(1000,
-											result.getMessage());
-								}
-							} else {
-								LogUtils.e("获取支付验证返回字段---->" + response);
-								coinView.getPlatFormResult(code, result.getMessage(),dataBean,channel);
-								if (paySingleView != null) {
-									paySingleView.getPayStatus(code,
-											result.getMessage());
-								}
-							}
-						}catch(JsonSyntaxException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonIOException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonParseException e){
-							exceptionPresenter.tips(context, e);
-						}catch (Exception e) {
-							// TODO: handle exception
-							exceptionPresenter.tips(context, e);
-						}
-						
-					}
-				}, new Response.ErrorListener() {
-
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "出错--->" + error.getMessage());
-						coinView.getPlatFormResult(2003, error.getMessage(),dataBean,channel);
+			@Override
+			public void onResponse(String response) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "获取支付验证肯定没错--->" + response);
+				exceptionPresenter = new ExceptionPresenter();
+				try{
+					Gson gson = new Gson();
+					PayItemListBean result = gson.fromJson(response,
+							PayItemListBean.class);
+					Log.e("Com", "gson解释后数据--->" + result.toString());
+					int code = Integer.parseInt(result.getCode());
+					if (code == 1000) {
+						// 1000就是成功
+						LogUtils.e("获取支付验证成功返回字段---->" + response);
+						coinView.getPlatFormResult(code, result.getPoint(),dataBean,channel);
 						if (paySingleView != null) {
-
-							paySingleView.getPayStatus(10014,
-									error.getMessage());
+							paySingleView.getPayStatus(1000,
+									result.getMessage());
+						}
+					} else {
+						LogUtils.e("获取支付验证返回字段---->" + response);
+						coinView.getPlatFormResult(code, result.getMessage(),dataBean,channel);
+						if (paySingleView != null) {
+							paySingleView.getPayStatus(code,
+									result.getMessage());
 						}
 					}
-				}) {
+				}catch(JsonSyntaxException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonIOException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonParseException e){
+					exceptionPresenter.tips(context, e);
+				}catch (Exception e) {
+					// TODO: handle exception
+					exceptionPresenter.tips(context, e);
+				}
+
+			}
+		}, new Response.ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "出错--->" + error.getMessage());
+				coinView.getPlatFormResult(2003, error.getMessage(),dataBean,channel);
+				if (paySingleView != null) {
+
+					paySingleView.getPayStatus(10014,
+							error.getMessage());
+				}
+			}
+		}) {
 			@Override
 			protected Map<String, String> getParams() throws AuthFailureError {
 				Map<String, String> map = new HashMap<String, String>();
@@ -543,7 +543,7 @@ public class WXModel implements WXPayContract.WXPayModel {
 	 */
 	@Override
 	public void PayForPlatformCoin(final String serverCode, final String roleId,final String channel,
-			DataBean dataBean, View paySingleView,final CoinView coinView) {
+								   DataBean dataBean, View paySingleView,final CoinView coinView) {
 		// TODO Auto-generated method stub
 
 		context = HWControl.getInstance().getContext();
@@ -581,49 +581,49 @@ public class WXModel implements WXPayContract.WXPayModel {
 		StringRequest stringRequest = new StringRequest(Method.POST,
 				Constant.HW_PAY_WITH_COIN, new Response.Listener<String>() {
 
-					@Override
-					public void onResponse(String response) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "获取平台币支付结果肯定没错--->" + response);
-						exceptionPresenter = new ExceptionPresenter();
-						try{
-							Gson gson = new Gson();
-							WXPayOrderBean result = gson.fromJson(response,
-									WXPayOrderBean.class);
-							Log.e("Com", "gson解释后数据--->" + result.toString());
-							int code = Integer.parseInt(result.getCode());
-							if (code == 1000) {
-								// 1000就是成功
-								LogUtils.e("获取平台币支付订单成功返回字段---->" + response);
-								// ParseOrder(result);
-								coinView.getPayStatus(code, result.getMessage());
-							} else if (code == 1001) {
-								coinView.getPayStatus(code, result.getMessage());
-							} else {
-								LogUtils.e("获取平台币支付订单返回字段---->" + response);
-								coinView.getPayStatus(code, result.getMessage());
-							}
-						}catch(JsonSyntaxException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonIOException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonParseException e){
-							exceptionPresenter.tips(context, e);
-						}catch (Exception e) {
-							// TODO: handle exception
-							exceptionPresenter.tips(context, e);
-						}
-						
+			@Override
+			public void onResponse(String response) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "获取平台币支付结果肯定没错--->" + response);
+				exceptionPresenter = new ExceptionPresenter();
+				try{
+					Gson gson = new Gson();
+					WXPayOrderBean result = gson.fromJson(response,
+							WXPayOrderBean.class);
+					Log.e("Com", "gson解释后数据--->" + result.toString());
+					int code = Integer.parseInt(result.getCode());
+					if (code == 1000) {
+						// 1000就是成功
+						LogUtils.e("获取平台币支付订单成功返回字段---->" + response);
+						// ParseOrder(result);
+						coinView.getPayStatus(code, result.getMessage());
+					} else if (code == 1001) {
+						coinView.getPayStatus(code, result.getMessage());
+					} else {
+						LogUtils.e("获取平台币支付订单返回字段---->" + response);
+						coinView.getPayStatus(code, result.getMessage());
 					}
-				}, new Response.ErrorListener() {
+				}catch(JsonSyntaxException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonIOException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonParseException e){
+					exceptionPresenter.tips(context, e);
+				}catch (Exception e) {
+					// TODO: handle exception
+					exceptionPresenter.tips(context, e);
+				}
 
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "出错--->" + error.getMessage());
-						coinView.getPayStatus(2003, error.getMessage());
-					}
-				}) {
+			}
+		}, new Response.ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "出错--->" + error.getMessage());
+				coinView.getPayStatus(2003, error.getMessage());
+			}
+		}) {
 			@Override
 			protected Map<String, String> getParams() throws AuthFailureError {
 				Map<String, String> map = new HashMap<String, String>();
@@ -658,12 +658,12 @@ public class WXModel implements WXPayContract.WXPayModel {
 		};
 
 		RequestQueueHepler.getInstance().getQueue().add(stringRequest);
-		
+
 	}
 
 	@Override
 	public void checkPlatformCoin(final String gameItemId, final String channel,
-			final HWGpPayItem dataBean, final CoinView coinView) {
+								  final HWGpPayItem dataBean, final CoinView coinView) {
 		LogUtils.e("谷歌的平台币验证");
 		// 专门针对谷歌弄得
 		if (context == null) {
@@ -673,6 +673,7 @@ public class WXModel implements WXPayContract.WXPayModel {
 		// 设置字段
 		final String gamecode = gameCode;
 		final String comefrom = "android";
+		final String extraData = HWControl.getInstance().getExtraData();
 		final String version = "1.0";// 暂时固定
 		final String userId = HWConfigSharedPreferences.getInstance(context)
 				.getUserId();
@@ -683,59 +684,59 @@ public class WXModel implements WXPayContract.WXPayModel {
 		StringRequest stringRequest = new StringRequest(Method.POST,
 				Constant.HW_CHECK_COIN, new Response.Listener<String>() {
 
-					@Override
-					public void onResponse(String response) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "获取支付验证肯定没错--->" + response);
-						exceptionPresenter = new ExceptionPresenter();
-						try{
-							Gson gson = new Gson();
-							PayItemListBean result = gson.fromJson(response,
-									PayItemListBean.class);
-							Log.e("Com", "gson解释后数据--->" + result.toString());
-							int code = Integer.parseInt(result.getCode());
-							if (code == 1000) {
-								// 1000就是成功
-								LogUtils.e("获取支付验证成功返回字段---->" + response);
-								coinView.getPlatFormResult(code, result.getPoint(),dataBean,channel);
-								if (paySingleView != null) {
-									paySingleView.getPayStatus(1000,
-											result.getMessage());
-								}
-							} else {
-								LogUtils.e("获取支付验证返回字段---->" + response);
-								coinView.getPlatFormResult(code, result.getMessage(),dataBean,channel);
-								if (paySingleView != null) {
-									paySingleView.getPayStatus(code,
-											result.getMessage());
-								}
-							}
-						}catch(JsonSyntaxException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonIOException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonParseException e){
-							exceptionPresenter.tips(context, e);
-						}catch (Exception e) {
-							// TODO: handle exception
-							exceptionPresenter.tips(context, e);
-						}
-						
-					}
-				}, new Response.ErrorListener() {
-
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "出错--->" + error.getMessage());
-						coinView.getPlatFormResult(2003, error.getMessage(),dataBean,channel);
+			@Override
+			public void onResponse(String response) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "获取支付验证肯定没错--->" + response);
+				exceptionPresenter = new ExceptionPresenter();
+				try{
+					Gson gson = new Gson();
+					PayItemListBean result = gson.fromJson(response,
+							PayItemListBean.class);
+					Log.e("Com", "gson解释后数据--->" + result.toString());
+					int code = Integer.parseInt(result.getCode());
+					if (code == 1000) {
+						// 1000就是成功
+						LogUtils.e("获取支付验证成功返回字段---->" + response);
+						coinView.getPlatFormResult(code, result.getPoint(),dataBean,channel);
 						if (paySingleView != null) {
-
-							paySingleView.getPayStatus(10014,
-									error.getMessage());
+							paySingleView.getPayStatus(1000,
+									result.getMessage());
+						}
+					} else {
+						LogUtils.e("获取支付验证返回字段---->" + response);
+						coinView.getPlatFormResult(code, result.getMessage(),dataBean,channel);
+						if (paySingleView != null) {
+							paySingleView.getPayStatus(code,
+									result.getMessage());
 						}
 					}
-				}) {
+				}catch(JsonSyntaxException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonIOException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonParseException e){
+					exceptionPresenter.tips(context, e);
+				}catch (Exception e) {
+					// TODO: handle exception
+					exceptionPresenter.tips(context, e);
+				}
+
+			}
+		}, new Response.ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "出错--->" + error.getMessage());
+				coinView.getPlatFormResult(2003, error.getMessage(),dataBean,channel);
+				if (paySingleView != null) {
+
+					paySingleView.getPayStatus(10014,
+							error.getMessage());
+				}
+			}
+		}) {
 			@Override
 			protected Map<String, String> getParams() throws AuthFailureError {
 				Map<String, String> map = new HashMap<String, String>();
@@ -760,8 +761,8 @@ public class WXModel implements WXPayContract.WXPayModel {
 
 	@Override
 	public void PayForPlatformCoin(final String serverCode, final String roleId,
-			final String channel, HWGpPayItem dataBean, View paySingleView,
-			final CoinView coinView) {
+								   final String channel, HWGpPayItem dataBean, View paySingleView,
+								   final CoinView coinView) {
 		// 专门针对谷歌弄得
 		context = HWControl.getInstance().getContext();
 		this.paySingleView = paySingleView;
@@ -785,11 +786,12 @@ public class WXModel implements WXPayContract.WXPayModel {
 		final String timestamp = HWUtils.getTimestamp();
 		final String platform = ResLoader.getString(context, "platform");
 		final String gameName = ResLoader.getString(context, "game_name");
-		final String itemid = dataBean.getId();
+		final String itemid = dataBean.getGameItemId();
+		final String extraData = HWControl.getInstance().getExtraData();
 		final String description = dataBean.getDescription();
 		final String activeDescription = dataBean.getActiveDescription();
 		final String cpu = Build.CPU_ABI;
-		final String ItemKey = dataBean.getId();
+		final String ItemKey = dataBean.getGameItemId();
 		final String language = HWConfigSharedPreferences.getInstance(
 				HWControl.getInstance().getContext()).getLanguage();
 
@@ -797,49 +799,49 @@ public class WXModel implements WXPayContract.WXPayModel {
 		StringRequest stringRequest = new StringRequest(Method.POST,
 				Constant.HW_PAY_WITH_COIN, new Response.Listener<String>() {
 
-					@Override
-					public void onResponse(String response) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "获取平台币支付结果肯定没错--->" + response);
-						exceptionPresenter = new ExceptionPresenter();
-						try{
-							Gson gson = new Gson();
-							WXPayOrderBean result = gson.fromJson(response,
-									WXPayOrderBean.class);
-							Log.e("Com", "gson解释后数据--->" + result.toString());
-							int code = Integer.parseInt(result.getCode());
-							if (code == 1000) {
-								// 1000就是成功
-								LogUtils.e("获取平台币支付订单成功返回字段---->" + response);
-								// ParseOrder(result);
-								coinView.getPayStatus(code, result.getMessage());
-							} else if (code == 1001) {
-								coinView.getPayStatus(code, result.getMessage());
-							} else {
-								LogUtils.e("获取平台币支付订单返回字段---->" + response);
-								coinView.getPayStatus(code, result.getMessage());
-							}
-						}catch(JsonSyntaxException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonIOException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonParseException e){
-							exceptionPresenter.tips(context, e);
-						}catch (Exception e) {
-							// TODO: handle exception
-							exceptionPresenter.tips(context, e);
-						}
-						
+			@Override
+			public void onResponse(String response) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "获取平台币支付结果肯定没错--->" + response);
+				exceptionPresenter = new ExceptionPresenter();
+				try{
+					Gson gson = new Gson();
+					WXPayOrderBean result = gson.fromJson(response,
+							WXPayOrderBean.class);
+					Log.e("Com", "gson解释后数据--->" + result.toString());
+					int code = Integer.parseInt(result.getCode());
+					if (code == 1000) {
+						// 1000就是成功
+						LogUtils.e("获取平台币支付订单成功返回字段---->" + response);
+						// ParseOrder(result);
+						coinView.getPayStatus(code, result.getMessage());
+					} else if (code == 1001) {
+						coinView.getPayStatus(code, result.getMessage());
+					} else {
+						LogUtils.e("获取平台币支付订单返回字段---->" + response);
+						coinView.getPayStatus(code, result.getMessage());
 					}
-				}, new Response.ErrorListener() {
+				}catch(JsonSyntaxException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonIOException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonParseException e){
+					exceptionPresenter.tips(context, e);
+				}catch (Exception e) {
+					// TODO: handle exception
+					exceptionPresenter.tips(context, e);
+				}
 
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "出错--->" + error.getMessage());
-						coinView.getPayStatus(2003, error.getMessage());
-					}
-				}) {
+			}
+		}, new Response.ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "出错--->" + error.getMessage());
+				coinView.getPayStatus(2003, error.getMessage());
+			}
+		}) {
 			@Override
 			protected Map<String, String> getParams() throws AuthFailureError {
 				Map<String, String> map = new HashMap<String, String>();
@@ -857,12 +859,13 @@ public class WXModel implements WXPayContract.WXPayModel {
 				map.put("roleid", roleId);
 				map.put("cpu", cpu);
 				map.put("itemid", itemid + "");
+				map.put("extraData", extraData);
 				map.put("language", language);
 				map.put("gameName", gameName);
 				map.put("description", description);
 				map.put("activeDescription", activeDescription);
 				map.put("userid", userId);
-				map.put("channel", channel);
+				map.put("channel", "android");
 				map.put("item_key", ItemKey);
 
 				LogUtils.e("平台币支付订单地址---->" + Constant.HW_PAY_WITH_COIN);
