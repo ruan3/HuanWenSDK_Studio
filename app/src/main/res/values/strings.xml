@@ -271,9 +271,9 @@
     <string name="update_btn">更新</string>
 
 
-    <!-- facebook id -->
-    <string name="facebook_app_id">2050006918644574</string>
-	<string name="fb_login_protocol_scheme">fb2050006918644574</string>
+    <!-- facebook id 长生缘-->
+    <string name="facebook_app_id">181391816112559</string>
+    <string name="fb_login_protocol_scheme">fb181391816112559</string>
     
     <!-- 解析数据出错的提示 -->
     <string name="json_encode_error">未知错误</string>
