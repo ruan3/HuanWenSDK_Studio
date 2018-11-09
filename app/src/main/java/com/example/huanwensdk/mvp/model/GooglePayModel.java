@@ -13,6 +13,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -49,7 +50,7 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 
 /**
- * 
+ *
  * @Title: GooglePayModel.java
  * @Package com.example.huanwensdk.mvp.model
  * @Description: 谷歌支付业务逻辑类
@@ -67,24 +68,24 @@ public class GooglePayModel implements GooglePayContract.Model {
 	String serverCode;
 	String roleId;
 	String orderId;
-	
+
 
 	ExceptionContract.ExceptionPresenter exceptionPresenter;
-	
+
 	GooglePayContract.View googleView;
 
 	private List<HWGpPayItem> hwGpPayItems;
-	
 
-	
+
+
 	/**
 	 * 支付双验证
 	 */
 	@Override
 	public void pay(final String sdkOriginal, final String sdkStatus,
-			final String gpOrderId, final String serverCode, final String orderid,final String productId
+					final String gpOrderId, final String serverCode, final String orderid,final String productId
 			,final String strPurchas,
-			boolean isShowToast) {
+					boolean isShowToast) {
 		// TODO Auto-generated method stub
 
 		if (context == null) {
@@ -106,6 +107,7 @@ public class GooglePayModel implements GooglePayContract.Model {
 		final String comefrom = "android";
 		final String GpproductId = HWConfigSharedPreferences.getInstance(context).getGPproductId();
 		final String HWorderId = HWConfigSharedPreferences.getInstance(context).getOrderId();
+		final String extraData = HWControl.getInstance().getExtraData();
 		final String platform = ResLoader.getString(context, "platform");
 		// final String authorization =
 		// Base64.encode((gamecode+":"+serverCode+":"+"1.0"+":"+"android"+":"+platform).getBytes());
@@ -128,47 +130,47 @@ public class GooglePayModel implements GooglePayContract.Model {
 		StringRequest stringRequest = new StringRequest(Method.POST,
 				Constant.HW_PAY, new Response.Listener<String>() {
 
-					@Override
-					public void onResponse(String response) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "请求谷歌支付双重验证肯定没错--->" + response);
-						try{
-							Gson gson = new Gson();
-							HWPayItemBean result = gson.fromJson(response,
-									HWPayItemBean.class);
-							Log.e("Com", "gson解释后数据--->" + result.toString());
-							int code = Integer.parseInt(result.getCode());
-							if (code == 1000) {
-								// 1000就是成功
-								// 检测数据绑定
-								LogUtils.e("获取谷歌支付双重验证成功返回字段---->" + response);
-								googleView.payResult(1110, "支付成功");
-							} else if (code == 1001) {
-								googleView.payResult(1001, "支付失敗");
-							} else {
-								LogUtils.e("获取谷歌支付双验证失败返回字段---->" + response);
-								googleView.payResult(1001, "支付失敗");
-							}
-						}catch(JsonIOException e){
-							LogUtils.e("JsonIOException---->"+e.toString());
-							Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
-						}catch(JsonParseException e){
-							LogUtils.e("JsonParseException---->"+e.toString());
-							Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
-						}catch(Exception e){
-							LogUtils.e("Exception---->"+e.toString());
-							Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
-						}
-						
+			@Override
+			public void onResponse(String response) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "请求谷歌支付双重验证肯定没错--->" + response);
+				try{
+					Gson gson = new Gson();
+					HWPayItemBean result = gson.fromJson(response,
+							HWPayItemBean.class);
+					Log.e("Com", "gson解释后数据--->" + result.toString());
+					int code = Integer.parseInt(result.getCode());
+					if (code == 1000) {
+						// 1000就是成功
+						// 检测数据绑定
+						LogUtils.e("获取谷歌支付双重验证成功返回字段---->" + response);
+						googleView.payResult(1110, "支付成功");
+					} else if (code == 1001) {
+						googleView.payResult(1001, "支付失敗");
+					} else {
+						LogUtils.e("获取谷歌支付双验证失败返回字段---->" + response);
+						googleView.payResult(1001, "支付失敗");
 					}
-				}, new Response.ErrorListener() {
+				}catch(JsonIOException e){
+					LogUtils.e("JsonIOException---->"+e.toString());
+					Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
+				}catch(JsonParseException e){
+					LogUtils.e("JsonParseException---->"+e.toString());
+					Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
+				}catch(Exception e){
+					LogUtils.e("Exception---->"+e.toString());
+					Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
+				}
 
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "出错--->" + error.getMessage());
-					}
-				}) {
+			}
+		}, new Response.ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "出错--->" + error.getMessage());
+			}
+		}) {
 			@Override
 			protected Map<String, String> getParams() throws AuthFailureError {
 				Map<String, String> map = new HashMap<String, String>();
@@ -177,7 +179,6 @@ public class GooglePayModel implements GooglePayContract.Model {
 //				map.put("sdkStatus", sdkStatus);
 				map.put("orderid", HWorderId);
 				map.put("gpOrderId", gpOrderId);
-				
 				map.put("servercode", serverCode);
 				map.put("gamecode", gamecode);
 				map.put("comefrom", comefrom);
@@ -186,7 +187,8 @@ public class GooglePayModel implements GooglePayContract.Model {
 				map.put("version", "1.0");
 				map.put("productId", GpproductId);
 				map.put("purchase", strPurchas);
-				
+				map.put("extraData", extraData);
+
 
 				LogUtils.e("获取谷歌支付双验证请求地址---->" + Constant.HW_PAY);
 				LogUtils.e("获取谷歌支付双验证请求字段----->" + map.toString());
@@ -195,6 +197,11 @@ public class GooglePayModel implements GooglePayContract.Model {
 			}
 		};
 
+		stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+				20000,//默认超时时间，应设置一个稍微大点儿的，
+				DefaultRetryPolicy.DEFAULT_MAX_RETRIES,//默认最大尝试次数
+				DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+		));
 		RequestQueueHepler.getInstance().getQueue().add(stringRequest);
 
 	}
@@ -205,7 +212,7 @@ public class GooglePayModel implements GooglePayContract.Model {
 	public void init(GooglePayContract.View googleView) {
 
 		context = HWControl.getInstance().getContext();
-		
+
 		roleId = HWConfigSharedPreferences.getInstance(context).getRoleId();
 		RoleInfo roleInfo = DBUtils.getInstance().queryRole(roleId);
 		if(roleInfo!=null){
@@ -213,7 +220,7 @@ public class GooglePayModel implements GooglePayContract.Model {
 		}else{
 			LogUtils.e("谷歌获取服务器失败");
 		}
-		
+
 		this.googleView = googleView;
 		// 第一步,先拿到谷歌公钥，也就是appkey
 		String base64EncodedPublicKey = HWConfigSharedPreferences.getInstance(context).getGPPublicKey();
@@ -230,9 +237,10 @@ public class GooglePayModel implements GooglePayContract.Model {
 
 			@Override
 			public void onIabSetupFinished(IabResult result) {
-
+				LogUtils.e("开始进行安装IAP--->"+result.getMessage());
 				// 检测结果是否成功
 				if (result.isSuccess()) {
+					LogUtils.e("谷歌安装成功--->"+result.getMessage());
 					// 成功后，查询是否有未消费订单
 					mHelper.queryInventoryAsync(mGotInventoryListener);
 				} else {
@@ -254,7 +262,7 @@ public class GooglePayModel implements GooglePayContract.Model {
 	 */
 	IabHelper.OnIabPurchaseFinishedListener mPurchaseFinishedListener = new IabHelper.OnIabPurchaseFinishedListener() {
 		public void onIabPurchaseFinished(IabResult paramIabResult,
-				Purchase paramPurchase) {
+										  Purchase paramPurchase) {
 			LogUtils.e("进入谷歌支付监听");
 			if (paramIabResult.isSuccess()) {
 //				HashMap localHashMap = new HashMap();
@@ -273,22 +281,25 @@ public class GooglePayModel implements GooglePayContract.Model {
 
 	/**
 	 * 消费项目
-	 * 
+	 *
 	 * @param paramPurchase
 	 */
 	public void consumeAsync(Purchase paramPurchase) {
 		mHelper.consumeAsync(paramPurchase, mConsumeFinishedListener);
 	}
 
+	int times = 0;
+
 	/**
 	 * 消费结果监听
 	 */
 	IabHelper.OnConsumeFinishedListener mConsumeFinishedListener = new IabHelper.OnConsumeFinishedListener() {
 		public void onConsumeFinished(Purchase paramPurchase,
-				IabResult paramIabResult) {
+									  IabResult paramIabResult) {
 			LogUtils.e("支付成功后，进行项目消费--->"+paramPurchase.toString());
 			if (paramIabResult.isSuccess()) {
 				LogUtils.e("项目消费成功---->");
+				times = times + 1;
 				googleView.consumeResult(1000, "消费项目成功", orderId);
 				//消费成功后，回调给主界面。然后进行双验证
 //				HashMap localHashMap = new HashMap();
@@ -300,6 +311,7 @@ public class GooglePayModel implements GooglePayContract.Model {
 						paramPurchase.getOrderId(),
 						serverCode,
 						orderId, paramPurchase.getSku(),paramPurchase.getToken(),true);
+				LogUtils.e("次数："+times);
 				return;
 			}else{
 				Toast.makeText(context, ResLoader.getString(context, "string_pay_google_consume_error"), Toast.LENGTH_SHORT).show();
@@ -331,7 +343,7 @@ public class GooglePayModel implements GooglePayContract.Model {
 
 		}
 	};
-	
+
 
 	/**
 	 * 请求后台品项
@@ -377,50 +389,50 @@ public class GooglePayModel implements GooglePayContract.Model {
 		StringRequest stringRequest = new StringRequest(Method.POST,
 				Constant.HW_PAY_LIST, new Response.Listener<String>() {
 
-					@Override
-					public void onResponse(String response) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "请求谷歌支付品项肯定没错--->" + response);
-						try{
-							Gson gson = new Gson();
-							HWPayItemBean result = gson.fromJson(response,
-									HWPayItemBean.class);
-							Log.e("Com", "gson解释后数据--->" + result.toString());
-							int code = Integer.parseInt(result.getCode());
-							if (code == 1000) {
-								// 1000就是成功
-								// 检测数据绑定
-								LogUtils.e("获取谷歌支付品项成功返回字段---->" + response);
-								googleView.getGDItems(1000, result.getData());
-								// 获取商品成功后，查看是否有未消费的
-								getGpItamList(result);
-							} else if (code == 1001) {
-								googleView.getGDItems(1001, null);
-							} else {
-								LogUtils.e("获取谷歌支付品项失败返回字段---->" + response);
-								googleView.getGDItems(1002, null);
-							}
-						}catch(JsonIOException e){
-							LogUtils.e("JsonIOException---->"+e.toString());
-							Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
-						}catch(JsonParseException e){
-							LogUtils.e("JsonParseException---->"+e.toString());
-							Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
-						}catch (Exception e) {
-							LogUtils.e("Exception---->"+e.toString());
-							Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
-						}
-						
+			@Override
+			public void onResponse(String response) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "请求谷歌支付品项肯定没错--->" + response);
+				try{
+					Gson gson = new Gson();
+					HWPayItemBean result = gson.fromJson(response,
+							HWPayItemBean.class);
+					Log.e("Com", "gson解释后数据--->" + result.toString());
+					int code = Integer.parseInt(result.getCode());
+					if (code == 1000) {
+						// 1000就是成功
+						// 检测数据绑定
+						LogUtils.e("获取谷歌支付品项成功返回字段---->" + response);
+						googleView.getGDItems(1000, result.getData());
+						// 获取商品成功后，查看是否有未消费的
+						getGpItamList(result);
+					} else if (code == 1001) {
+						googleView.getGDItems(1001, null);
+					} else {
+						LogUtils.e("获取谷歌支付品项失败返回字段---->" + response);
+						googleView.getGDItems(1002, null);
 					}
-				}, new Response.ErrorListener() {
+				}catch(JsonIOException e){
+					LogUtils.e("JsonIOException---->"+e.toString());
+					Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
+				}catch(JsonParseException e){
+					LogUtils.e("JsonParseException---->"+e.toString());
+					Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
+				}catch (Exception e) {
+					LogUtils.e("Exception---->"+e.toString());
+					Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
+				}
 
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "出错--->" + error.getMessage());
-						Toast.makeText(context, "请求服务出错", Toast.LENGTH_SHORT).show();
-					}
-				}) {
+			}
+		}, new Response.ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "出错--->" + error.getMessage());
+				Toast.makeText(context, "请求服务出错", Toast.LENGTH_SHORT).show();
+			}
+		}) {
 			@Override
 			protected Map<String, String> getParams() throws AuthFailureError {
 				Map<String, String> map = new HashMap<String, String>();
@@ -451,7 +463,7 @@ public class GooglePayModel implements GooglePayContract.Model {
 
 	/**
 	 * 获取到网络请求后，操作
-	 * 
+	 *
 	 * @param result
 	 */
 	private void getGpItamList(HWPayItemBean result) {
@@ -501,7 +513,7 @@ public class GooglePayModel implements GooglePayContract.Model {
 
 	/**
 	 * 消费所有品项
-	 * 
+	 *
 	 * @param paramList
 	 */
 	public void consumeAllAsync(List<Purchase> paramList) {
@@ -515,19 +527,19 @@ public class GooglePayModel implements GooglePayContract.Model {
 
 		@Override
 		public void onConsumeMultiFinished(List<Purchase> purchases,
-				List<IabResult> results) {
+										   List<IabResult> results) {
 
 			LogUtils.e("=====商品消费完成======");
-			
+
 			//重新加载后台的商品数据
-			getGDItemList();
+//			getGDItemList();
 
 		}
 	};
 
 	@Override
 	public void GetItemList(final String serverCode, String roleId,
-			final String proItemid, View googleView) {
+							final String proItemid, View googleView) {
 		// TODO Auto-generated method stub
 		LogUtils.e("执行谷歌支付请求---->");
 		context = HWControl.getInstance().getContext();
@@ -561,47 +573,47 @@ public class GooglePayModel implements GooglePayContract.Model {
 		StringRequest stringRequest = new StringRequest(Method.POST,
 				Constant.HW_PAY_LIST, new Response.Listener<String>() {
 
-					@Override
-					public void onResponse(String response) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "获取谷歌订单肯定没错--->" + response);
-						try{
-							Gson gson = new Gson();
-							OrderResultBean result = gson.fromJson(response,
-									OrderResultBean.class);
-							Log.e("Com", "gson解释后数据--->" + result.toString());
-							int code = Integer.parseInt(result.getCode());
-							if (code == 1000) {
-								// 1000就是成功
-								// 检测数据绑定
-								LogUtils.e("获取谷歌订单成功返回字段---->" + response);
-							} else if (code == 1001) {
-							} else {
-								LogUtils.e("获取谷歌订单失败返回字段---->" + response);
-							}
-						}catch(JsonSyntaxException e){
-							LogUtils.e("JsonSyntaxException---->"+e.toString());
-							Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
-						}catch(JsonIOException e){
-							LogUtils.e("JsonIOException---->"+e.toString());
-							Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
-						}catch(JsonParseException e){
-							LogUtils.e("JsonParseException---->"+e.toString());
-							Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
-						}catch (Exception e) {
-							LogUtils.e("Exception---->"+e.toString());
-							Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
-						}
-						
+			@Override
+			public void onResponse(String response) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "获取谷歌订单肯定没错--->" + response);
+				try{
+					Gson gson = new Gson();
+					OrderResultBean result = gson.fromJson(response,
+							OrderResultBean.class);
+					Log.e("Com", "gson解释后数据--->" + result.toString());
+					int code = Integer.parseInt(result.getCode());
+					if (code == 1000) {
+						// 1000就是成功
+						// 检测数据绑定
+						LogUtils.e("获取谷歌订单成功返回字段---->" + response);
+					} else if (code == 1001) {
+					} else {
+						LogUtils.e("获取谷歌订单失败返回字段---->" + response);
 					}
-				}, new Response.ErrorListener() {
+				}catch(JsonSyntaxException e){
+					LogUtils.e("JsonSyntaxException---->"+e.toString());
+					Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
+				}catch(JsonIOException e){
+					LogUtils.e("JsonIOException---->"+e.toString());
+					Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
+				}catch(JsonParseException e){
+					LogUtils.e("JsonParseException---->"+e.toString());
+					Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
+				}catch (Exception e) {
+					LogUtils.e("Exception---->"+e.toString());
+					Toast.makeText(context, ResLoader.getString(context, "json_encode_error"), Toast.LENGTH_SHORT).show();
+				}
 
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "出错--->" + error.getMessage());
-					}
-				}) {
+			}
+		}, new Response.ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "出错--->" + error.getMessage());
+			}
+		}) {
 			@Override
 			protected Map<String, String> getParams() throws AuthFailureError {
 				Map<String, String> map = new HashMap<String, String>();
@@ -631,7 +643,7 @@ public class GooglePayModel implements GooglePayContract.Model {
 		RequestQueueHepler.getInstance().getQueue().add(stringRequest);
 
 	}
-	
+
 	String payType;
 	String itemid;
 
@@ -640,9 +652,9 @@ public class GooglePayModel implements GooglePayContract.Model {
 	 */
 	@Override
 	public void getOrder(final String itemId, final String serverCode,
-			final String roleId) {
+						 final String roleId) {
 
-		LogUtils.e("执行谷歌支付请求---->");
+		LogUtils.e("执行谷歌支付请求---->"+itemId);
 		context = HWControl.getInstance().getContext();
 		final String userid = HWConfigSharedPreferences.getInstance(context)
 				.getUserId();
@@ -653,6 +665,7 @@ public class GooglePayModel implements GooglePayContract.Model {
 			// 设置字段
 			payType = hwPayItemBean.getGameItemId();
 			itemid = hwPayItemBean.getId();
+			LogUtils.e("执行了hwGpPayItems--->"+hwPayItemBean.toString());
 		}else{
 			payType = itemId;
 			itemid = itemId;
@@ -680,54 +693,54 @@ public class GooglePayModel implements GooglePayContract.Model {
 		StringRequest stringRequest = new StringRequest(Method.POST,
 				Constant.HW_GET_GOOGLE_ORDER, new Response.Listener<String>() {
 
-					@Override
-					public void onResponse(String response) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "获取谷歌订单肯定没错--->" + response);
-						exceptionPresenter = new ExceptionPresenter();
-						try{
-							Gson gson = new Gson();
-							HWGpOrderInfo result = gson.fromJson(response,
-									HWGpOrderInfo.class);
-							Log.e("Com", "gson解释后数据--->" + result.toString());
-							int code = Integer.parseInt(result.getCode());
-							if (code == 1000) {
-								// 1000就是成功
-								// 检测数据绑定
-								LogUtils.e("获取谷歌订单成功返回字段---->" + response);
-								HWConfigSharedPreferences.getInstance(context).setOrderId(result.getOrderid());
-								LogUtils.e("获取的orderid--->"+HWConfigSharedPreferences.getInstance(context).getOrderId());
-								if (mHelper != null) {
-									// 真正调起谷歌支付
-									HWConfigSharedPreferences.getInstance(context).setGPproductId(result.getData().getProductid());
-									mHelper.launchPurchaseFlow((Activity)context, result.getData().getProductid(), 1000, mPurchaseFinishedListener);
-								}
-							} else if (code == 1001) {
-								Toast.makeText(context, ResLoader.getString(context, "string_pay_google_getorder_error"), Toast.LENGTH_SHORT).show();
-							} else {
-								LogUtils.e("获取谷歌订单失败返回字段---->" + response);
-								Toast.makeText(context, ResLoader.getString(context, "string_pay_google_getorder_error"), Toast.LENGTH_SHORT).show();
-							}
-						}catch(JsonSyntaxException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonIOException e){
-							exceptionPresenter.tips(context, e);
-						}catch(JsonParseException e){
-							exceptionPresenter.tips(context, e);
-						}catch(Exception e){
-							exceptionPresenter.tips(context, e);
+			@Override
+			public void onResponse(String response) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "获取谷歌订单肯定没错--->" + response);
+				exceptionPresenter = new ExceptionPresenter();
+				try{
+					Gson gson = new Gson();
+					HWGpOrderInfo result = gson.fromJson(response,
+							HWGpOrderInfo.class);
+					Log.e("Com", "gson解释后数据--->" + result.toString());
+					int code = Integer.parseInt(result.getCode());
+					if (code == 1000) {
+						// 1000就是成功
+						// 检测数据绑定
+						LogUtils.e("获取谷歌订单成功返回字段---->" + response);
+						HWConfigSharedPreferences.getInstance(context).setOrderId(result.getOrderid());
+						LogUtils.e("获取的orderid--->"+HWConfigSharedPreferences.getInstance(context).getOrderId());
+						if (mHelper != null) {
+							// 真正调起谷歌支付
+							HWConfigSharedPreferences.getInstance(context).setGPproductId(result.getData().getProductid());
+							mHelper.launchPurchaseFlow((Activity)context, result.getData().getProductid(), 1000, mPurchaseFinishedListener);
 						}
-						
+					} else if (code == 1001) {
+						Toast.makeText(context, ResLoader.getString(context, "string_pay_google_getorder_error"), Toast.LENGTH_SHORT).show();
+					} else {
+						LogUtils.e("获取谷歌订单失败返回字段---->" + response);
+						Toast.makeText(context, ResLoader.getString(context, "string_pay_google_getorder_error"), Toast.LENGTH_SHORT).show();
 					}
-				}, new Response.ErrorListener() {
+				}catch(JsonSyntaxException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonIOException e){
+					exceptionPresenter.tips(context, e);
+				}catch(JsonParseException e){
+					exceptionPresenter.tips(context, e);
+				}catch(Exception e){
+					exceptionPresenter.tips(context, e);
+				}
 
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						// TODO Auto-generated method stub
-						Log.e("Com", "出错--->" + error.getMessage());
-						Toast.makeText(context, ResLoader.getString(context, "generic_server_down"), Toast.LENGTH_SHORT).show();
-					}
-				}) {
+			}
+		}, new Response.ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				// TODO Auto-generated method stub
+				Log.e("Com", "出错--->" + error.getMessage());
+				Toast.makeText(context, ResLoader.getString(context, "generic_server_down"), Toast.LENGTH_SHORT).show();
+			}
+		}) {
 			@Override
 			protected Map<String, String> getParams() throws AuthFailureError {
 				Map<String, String> map = new HashMap<String, String>();
