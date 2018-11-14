@@ -363,8 +363,8 @@ public class HWSDK {
 		}else{
 			LogUtils.e("谷歌回到错误！");
 		}
-
-		if (requestCode== Activity.RESULT_OK){
+		LogUtils.e("requestCode---->"+requestCode+"------>Activity.RESULT_OK"+Activity.RESULT_OK);
+		if (resultCode== Activity.RESULT_OK){
 			PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
 			String mPaymentId;
 			LogUtils.e(confirm.toString());
