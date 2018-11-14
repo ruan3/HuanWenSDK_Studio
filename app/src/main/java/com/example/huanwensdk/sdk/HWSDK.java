@@ -39,6 +39,7 @@ import com.example.huanwensdk.utils.HWControl;
 import com.example.huanwensdk.utils.LogUtils;
 import com.example.huanwensdk.utils.sp.HWConfigSharedPreferences;
 import com.facebook.CallbackManager;
+import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
 
@@ -311,6 +312,8 @@ public class HWSDK {
 		TrialBindingEmailDialog.getInstance().exitDialog();
 		UserCenterDialog.getInstance().exitDialog();
 //		WXPayDialog.getInstance().exitDialog();
+		//sdk退出后，停掉PayPalService服务。
+		context.stopService(new Intent(context, PayPalService.class));
 	}
 	
 	public void HWMemberCenter(Context context,HWGameMemberListener hwGameMemberListener){
