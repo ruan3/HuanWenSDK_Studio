@@ -395,6 +395,7 @@ public class HWSDK {
 		dataBean.setCurrency("USD");
 		dataBean.setDescription("测试paypal支付item");
 		dataBean.setGameItemId("C10");
+		dataBean.setGamecode("1001");
 		PayPalContract.Presenter presenter = new PayPalPresenter();
 		presenter.payWithPayPal(dataBean);
 	}
