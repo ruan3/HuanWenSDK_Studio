@@ -111,5 +111,8 @@ public class Constant {
 	public static final String HW_SAVE_ROLE = header+"interface.php?c=IHwRole";
 	public static final String HW_APP_KEY = "HWGAME#_DR*)HW";
 
+	//PayPal的clientId
+	public static final String PAYPAL_CLIENT_ID = "AYrfroV0vE1CzCrozLQX9prp5KOe9UKLYK_00vtR3znN8jYwiHPkg8dlbwOpBxaRNQck3KzqUlhsKcWx";
+
 	public static String GAME_FILE_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "fangame" + File.separator;
 }
