@@ -1,4 +1,5 @@
 package com.example.huanwensdk.sdk;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -7,9 +8,11 @@ import android.text.TextUtils;
 import com.example.huanwensdk.DataBase.DBUtils;
 import com.example.huanwensdk.bean.user.HWInfoUser;
 import com.example.huanwensdk.bean.user.RoleInfo;
+import com.example.huanwensdk.bean.wxpay.PayItemListBean;
 import com.example.huanwensdk.googleUtils.IabHelper;
 import com.example.huanwensdk.mvp.contract.CheckServerContract;
 import com.example.huanwensdk.mvp.contract.FreeLoginContract;
+import com.example.huanwensdk.mvp.contract.PayPalContract;
 import com.example.huanwensdk.mvp.contract.SaveRoleContract;
 import com.example.huanwensdk.mvp.contract.initcontract;
 import com.example.huanwensdk.mvp.contract.listener.HWGameMemberListener;
@@ -17,6 +20,7 @@ import com.example.huanwensdk.mvp.contract.listener.LoginListener;
 import com.example.huanwensdk.mvp.contract.listener.PayLisenter;
 import com.example.huanwensdk.mvp.presenter.CheckServerPresenter;
 import com.example.huanwensdk.mvp.presenter.FreeLoginPresenter;
+import com.example.huanwensdk.mvp.presenter.PayPalPresenter;
 import com.example.huanwensdk.mvp.presenter.SaveRolePresenter;
 import com.example.huanwensdk.ui.SplashActivity;
 import com.example.huanwensdk.ui.dialog.ForgetPasswordDialog;
@@ -35,6 +39,8 @@ import com.example.huanwensdk.utils.HWControl;
 import com.example.huanwensdk.utils.LogUtils;
 import com.example.huanwensdk.utils.sp.HWConfigSharedPreferences;
 import com.facebook.CallbackManager;
+import com.paypal.android.sdk.payments.PaymentActivity;
+import com.paypal.android.sdk.payments.PaymentConfirmation;
 
 /**
  * 
@@ -357,6 +363,52 @@ public class HWSDK {
 		}else{
 			LogUtils.e("谷歌回到错误！");
 		}
-		
+
+		if (requestCode== Activity.RESULT_OK){
+			PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+			String mPaymentId;
+			LogUtils.e(confirm.toString());
+			if (confirm != null) {
+				try {
+					/*
+					 * Log.i("paymentExample",
+					 * confirm.toJSONObject().toString(4));
+					 */
+					// send 'confirm' to your server for verification.
+					// see
+					// https://developer.paypal.com/webapps/developer/docs/integration/mobile/verify-mobile-payment/
+					// for more details.
+					// 得到回传的交易流水号
+					mPaymentId = confirm.toJSONObject().getJSONObject("response").getString("id");
+					LogUtils.e("PayPal支付回调数据--->"+confirm.toString());
+					// 交易服务端是什么鬼
+					@SuppressWarnings("unused")
+					String payment_client = confirm.getPayment().toJSONObject().toString();
+
+					// LogUtils.print("LOG", "paymentId: " + paymentId +
+					// ", payment_json: "
+					// + payment_client);
+					// 保留订单付款信息
+
+				} catch (Exception e) {
+					LogUtils.e("an extremely unlikely failure occurred: ");
+				}
+			}
+		} else if (resultCode == Activity.RESULT_CANCELED) {
+			// Log.i(TAG, "The user canceled.");
+			LogUtils.e("PayPal支付取消");
+		} else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
+			LogUtils.e("An invalid Payment or PayPalConfiguration was submitted. Please see the docs.");
+		}
+	}
+
+	public void PayPalPay(){
+		PayItemListBean.DataBean dataBean = new PayItemListBean.DataBean();
+		dataBean.setAmount(100);
+		dataBean.setCurrency("TWD");
+		dataBean.setDescription("测试paypal支付item");
+		dataBean.setGameItemId("C10");
+		PayPalContract.Presenter presenter = new PayPalPresenter();
+		presenter.payWithPayPal(dataBean);
 	}
 }
