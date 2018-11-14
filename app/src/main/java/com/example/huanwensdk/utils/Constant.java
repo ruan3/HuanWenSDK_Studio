@@ -10,7 +10,9 @@ public class Constant {
 	public static final String SKD_VERSION = "1.0";
 	
 //	public static final String header="http://interface.sdkse.huanwenyx.com/";
-	public static final String header="http://interface.sdk.huanwenyx.com/";
+//	public static final String header="http://interface.sdk.huanwenyx.com/";
+
+	public static final String header="http://wuziqi.fangame.com.tw/";
 
 	//隐私政策url
 	public static final String PRIVACY_URL = "http://www.galaxystargame.com/privacy_policy.html";
