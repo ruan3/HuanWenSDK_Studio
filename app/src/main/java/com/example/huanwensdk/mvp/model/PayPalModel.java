@@ -63,7 +63,7 @@ public class PayPalModel implements PayPalContract.Model{
     // private static final String CONFIG_CLIENT_ID = "paypal官方申请的沙盒设备ID";
 
     private static PayPalConfiguration paypalConfig = new
-            PayPalConfiguration().environment(CONFIG_ENVIRONMENT).clientId(CONFIG_CLIENT_ID).acceptCreditCards(true);
+            PayPalConfiguration().environment(CONFIG_ENVIRONMENT).clientId(CONFIG_CLIENT_ID);
 
     @Override
     public void getOrder(final String itemId, final String serverCode, final String roleId, PayItemListBean.DataBean dataBean, PayPalContract.View PayPalView) {
