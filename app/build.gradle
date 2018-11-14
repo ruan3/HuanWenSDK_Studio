@@ -42,6 +42,9 @@ dependencies {
     implementation 'com.facebook.android:facebook-login:[4,5)'
     implementation files('libs/ViewPagerIndicator_1.1.0.jar')
     implementation 'com.android.support:recyclerview-v7:27.0.2'
+    implementation('com.paypal.sdk:paypal-android-sdk:2.16.0') {
+        exclude group: 'io.card'
+    }
 }
 
 
