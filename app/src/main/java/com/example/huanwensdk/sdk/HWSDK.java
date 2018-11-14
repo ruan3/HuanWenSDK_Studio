@@ -370,25 +370,12 @@ public class HWSDK {
 			LogUtils.e(confirm.toString());
 			if (confirm != null) {
 				try {
-					/*
-					 * Log.i("paymentExample",
-					 * confirm.toJSONObject().toString(4));
-					 */
-					// send 'confirm' to your server for verification.
-					// see
-					// https://developer.paypal.com/webapps/developer/docs/integration/mobile/verify-mobile-payment/
-					// for more details.
 					// 得到回传的交易流水号
 					mPaymentId = confirm.toJSONObject().getJSONObject("response").getString("id");
-					LogUtils.e("PayPal支付回调数据--->"+confirm.toString());
+					LogUtils.e("PayPal支付回调数据--->"+confirm.toJSONObject());
 					// 交易服务端是什么鬼
 					@SuppressWarnings("unused")
 					String payment_client = confirm.getPayment().toJSONObject().toString();
-
-					// LogUtils.print("LOG", "paymentId: " + paymentId +
-					// ", payment_json: "
-					// + payment_client);
-					// 保留订单付款信息
 
 				} catch (Exception e) {
 					LogUtils.e("an extremely unlikely failure occurred: ");
@@ -405,7 +392,7 @@ public class HWSDK {
 	public void PayPalPay(){
 		PayItemListBean.DataBean dataBean = new PayItemListBean.DataBean();
 		dataBean.setAmount(100);
-		dataBean.setCurrency("TWD");
+		dataBean.setCurrency("USD");
 		dataBean.setDescription("测试paypal支付item");
 		dataBean.setGameItemId("C10");
 		PayPalContract.Presenter presenter = new PayPalPresenter();
