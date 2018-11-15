@@ -187,9 +187,9 @@ public class PayPalModel implements PayPalContract.Model{
         BigDecimal amout = new BigDecimal(dataBean.getAmount());
     // PayPalItem的四个参数. 1.商品名称 2.商品数量 3.商品单价 4.货币 5.商品描述
         PayPalItem item = new PayPalItem(dataBean.getTitle(), 1, amout, dataBean.getCurrency(), dataBean.getDescription());
-
+        String order = "";
         PayPalPayment palPayment = new PayPalPayment(amout,dataBean.getCurrency(),dataBean.getDescription(),PayPalPayment.PAYMENT_INTENT_SALE);
-
+        palPayment.custom("test_for_orderid");
     // 跳转到Paypal
         Intent i = new Intent(context, PaymentActivity.class);
 
